@@ -12,10 +12,9 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('project3')
 
-donations = SHEET.worksheet('donations')
 
+donations = SHEET.worksheet('donations')
 donation_data = donations.get_all_values()
-print(donation_data)
 
 
 def validate_abo_data():
@@ -30,11 +29,12 @@ def validate_abo_data():
             if (abo_input.upper() == 'A') or (abo_input.upper() == 'B') or (abo_input.upper() == 'AB') or (abo_input.upper() == 'O'):
                 print(f'The blood type you entered was {abo_input.upper()}')
                 abo_inputted = True
+                donations.update_acell('A8', abo_input.upper())
             else:
                 print("You entered an invalid input")
         except ValueError:
             print("You entered an invalid input")
-
+       
 
 validate_abo_data()
 
@@ -51,6 +51,7 @@ def validate_rh_data():
             if (rh_input.upper() == 'POS') or (rh_input.upper() == 'NEG'):
                 print(f'The blood type you entered was {rh_input.upper()}')
                 rh_inputted = True
+                donations.update_acell('B8', rh_input.upper())
             else:
                 print("You entered an invalid input")
         except ValueError:
@@ -58,3 +59,16 @@ def validate_rh_data():
 
 
 validate_rh_data()
+
+
+# def update_donations_worksheet(data):
+#     """
+#     Updating donations worksheet
+#     """
+#     print('Updating donations worksheet...')
+    
+#     print(donation_data)
+#     donation_data.append_row(data)
+
+
+# update_donations_worksheet(abo_data)

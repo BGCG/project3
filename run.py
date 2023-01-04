@@ -12,9 +12,11 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('project3')
 
-
+# global variables as caps
 donations = SHEET.worksheet('donations')
 donation_data = donations.get_all_values()
+
+options = ['APOS', 'ANEG', 'BPOS', 'BNEG', 'ABPOS', 'ABNEG', 'OPOS', 'ONEG']
 
 
 def validate_abo_data():
@@ -24,9 +26,10 @@ def validate_abo_data():
     abo_inputted = False
     while abo_inputted is False:
         try:
-            print('Please enter ABO in the following format: A, B, AB or O') 
+            print('Please enter the ABO blood type followed by Rh status '
+                  'i.e. APOS, ONEG, ABPOS')
             abo_input = str(input('Enter the ABO blood type entered: '))
-            if (abo_input.upper() == 'A') or (abo_input.upper() == 'B') or (abo_input.upper() == 'AB') or (abo_input.upper() == 'O'):
+            if abo_input.upper() in options:
                 print(f'The blood type you entered was {abo_input.upper()}')
                 abo_inputted = True
                 donations.update_acell('A8', abo_input.upper())
@@ -39,26 +42,26 @@ def validate_abo_data():
 validate_abo_data()
 
 
-def validate_rh_data():
-    """
-    Validate Rh input data and add to sheet
-    """
-    rh_inputted = False
-    while rh_inputted is False:
-        try:
-            print('Please enter Rh status in the following format: POS or NEG') 
-            rh_input = str(input('Enter the Rh status entered: '))
-            if (rh_input.upper() == 'POS') or (rh_input.upper() == 'NEG'):
-                print(f'The blood type you entered was {rh_input.upper()}')
-                rh_inputted = True
-                donations.update_acell('B8', rh_input.upper())
-            else:
-                print("You entered an invalid input")
-        except ValueError:
-            print("You did not enter a string")
+# def validate_rh_data():
+#     """
+#     Validate Rh input data and add to sheet
+#     """
+#     rh_inputted = False
+#     while rh_inputted is False:
+#         try:
+#             print('Please enter Rh status')
+#             rh_input = str(input('Enter the Rh status entered: '))
+#             if (rh_input.upper() == 'POS') or (rh_input.upper() == 'NEG'):
+#                 print(f'The blood type you entered was {rh_input.upper()}')
+#                 rh_inputted = True
+#                 donations.update_acell('B8', rh_input.upper())
+#             else:
+#                 print("You entered an invalid input")
+#         except ValueError:
+#             print("You did not enter a string")
 
 
-validate_rh_data()
+# validate_rh_data()
 
 
 # def update_donations_worksheet(data):

@@ -31,7 +31,7 @@ def validate_abo_data():
         try:
             print('Please enter the ABO blood type followed by Rh status '
                   'i.e. APOS, ONEG, ABPOS')
-            abo_input = str(input('Enter the ABO blood type entered: '))
+            abo_input = str(input('Enter the ABO blood type: '))
             if abo_input.upper() in options:
                 print(f'The blood type you entered was {abo_input.upper()}')
                 abo_inputted = True
@@ -60,8 +60,25 @@ def check_stock():
     Check stock data
     """
     print('Calculating donations collected today...')
-    apos_count = donations.findall('APOS')
-    print(apos_count)
+    blood_count = donations.col_values(1)
+    apos_count = blood_count.count('APOS')
+    print('Number of A positive blood donations collected today:', apos_count)
+    aneg_count = blood_count.count('ANEG')
+    print('Number of A negative blood donations collected today:', aneg_count)
+    bpos_count = blood_count.count('BPOS')
+    print('Number of B positive blood donations collected today:', bpos_count)
+    bneg_count = blood_count.count('BNEG')
+    print('Number of B negative blood donations collected today:', bneg_count)
+    abpos_count = blood_count.count('ABPOS')
+    print('Number of AB positive blood donations collected today:',
+          abpos_count)
+    abneg_count = blood_count.count('ABNEG')
+    print('Number of AB negative blood donations collected today:', 
+          abneg_count)
+    opos_count = blood_count.count('OPOS')
+    print('Number of O positive blood donations collected today:', opos_count)
+    oneg_count = blood_count.count('ONEG')
+    print('Number of O negative blood donations collected today:', oneg_count)
 
 
 check_stock()
@@ -77,11 +94,12 @@ def update_stock():
             print('Please input the blood stock today in eight digits in the '
                   'following format 29, 25, 20, 50, 20, 29, 20, 19')
             stock_input = []
-            stock_input = input('Please enter the stock check for today: ')
-            for int(values) in stock_input:
-                if len(stock_input[values]) == 8:
-                    print(f'You entered the following numbers - {stock_input}')
-                    stock_inputted = True
+            stock_input = int(input('Please enter the stock for today: '))
+            length = len(stock_input)
+            print(length)
+            if length == 8:
+                print(f'You entered the following numbers - {stock_input}')
+                stock_inputted = True
         except ValueError:
             print("You entered an invalid input")
 

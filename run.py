@@ -14,14 +14,17 @@ SHEET = GSPREAD_CLIENT.open('project3')
 
 # global variables as caps
 donations = SHEET.worksheet('donations')
+stock = SHEET.worksheet('stock')
+
 donation_data = donations.get_all_values()
+stock_data = stock.get_all_values()
 
 options = ['APOS', 'ANEG', 'BPOS', 'BNEG', 'ABPOS', 'ABNEG', 'OPOS', 'ONEG']
 
 
 def validate_abo_data():
     """
-    Validate ABO input data and add to sheet
+    Validate blood type input data and add to sheet
     """
     abo_inputted = False
     while abo_inputted is False:
@@ -35,43 +38,52 @@ def validate_abo_data():
                 donations.update_acell('A8', abo_input.upper())
             else:
                 print("You entered an invalid input")
+            # return abo_input
         except ValueError:
             print("You entered an invalid input")
-       
+
 
 validate_abo_data()
 
-
-# def validate_rh_data():
-#     """
-#     Validate Rh input data and add to sheet
-#     """
-#     rh_inputted = False
-#     while rh_inputted is False:
-#         try:
-#             print('Please enter Rh status')
-#             rh_input = str(input('Enter the Rh status entered: '))
-#             if (rh_input.upper() == 'POS') or (rh_input.upper() == 'NEG'):
-#                 print(f'The blood type you entered was {rh_input.upper()}')
-#                 rh_inputted = True
-#                 donations.update_acell('B8', rh_input.upper())
-#             else:
-#                 print("You entered an invalid input")
-#         except ValueError:
-#             print("You did not enter a string")
-
-
-# validate_rh_data()
+# DONATIONS_DATA = validate_abo_data()
+# print(DONATIONS_DATA.upper())
 
 
 # def update_donations_worksheet(data):
 #     """
-#     Updating donations worksheet
+#     Append row to donations worksheet
 #     """
-#     print('Updating donations worksheet...')
-    
-#     print(donation_data)
-#     donation_data.append_row(data)
+#     donations.append_row(data, table_range="donations!A:A")
+
+def check_stock():
+    """
+    Check stock data
+    """
+    print('Calculating donations collected today...')
+    apos_count = donations.findall('APOS')
+    print(apos_count)
 
 
-# update_donations_worksheet(abo_data)
+check_stock()
+
+
+def update_stock():
+    """
+    Check stock data
+    """
+    stock_inputted = False
+    while stock_inputted is False:
+        try:
+            print('Please input the blood stock today in eight digits in the '
+                  'following format 29, 25, 20, 50, 20, 29, 20, 19')
+            stock_input = []
+            stock_input = input('Please enter the stock check for today: ')
+            for int(values) in stock_input:
+                if len(stock_input[values]) == 8:
+                    print(f'You entered the following numbers - {stock_input}')
+                    stock_inputted = True
+        except ValueError:
+            print("You entered an invalid input")
+
+
+update_stock()

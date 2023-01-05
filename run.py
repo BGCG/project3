@@ -90,9 +90,9 @@ stock_data = stock.get_all_values()
 # check_stock()
 
 
-def update_stock():
+def validate_stock_input():
     """
-    Check stock data
+    Validate user input data for stock data
     """
     stock_inputted = False
     while stock_inputted is False:
@@ -115,7 +115,7 @@ def update_stock():
             break
 
 
-update_stock()
+validate_stock_input()
 
 
 def update_stock_sheet():

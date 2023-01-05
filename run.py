@@ -15,9 +15,11 @@ SHEET = GSPREAD_CLIENT.open('project3')
 # global variables as caps
 donations = SHEET.worksheet('donations')
 stock = SHEET.worksheet('stock')
+adj_stock = SHEET.worksheet('adjusted_stock')
 
 donation_data = donations.get_all_values()
 stock_data = stock.get_all_values()
+adj_stock_data = adj_stock.get_all_values()
 
 # options = ['APOS', 'ANEG', 'BPOS', 'BNEG', 'ABPOS', 'ABNEG', 'OPOS', 'ONEG']
 
@@ -108,7 +110,7 @@ def validate_stock_input():
                 print(f'You entered the following numbers - {stock_list}')
                 stock_inputted = True
             else:
-                print('You enter the wrong number of numbers.'
+                print('You entered the wrong number of numbers.'
                       'Please enter 8 sets')
         except ValueError:
             print("You entered an invalid input - must be only numeric")
@@ -116,13 +118,41 @@ def validate_stock_input():
     return stock_list
 
 
-def update_stock_sheet():
+def validate_used_stock_input():
     """
-    Update stock data worksheet
+    Validate used stock input
     """
-    print('Updating the stock sheet now...')
-    stock_list = validate_stock_input()
-    stock.append_row(stock_list)
+    used_stock_inputted = False
+    while used_stock_inputted is False:
+        try:
+            print('Please input the used blood stock today in eight digits '
+                  'seperated by a space and no commas between')
+            used_stock_input = input('Please enter the nummber of'
+                                     ' used donations: ').split()
+            used_stock_list = [int(item) for item in used_stock_input]
+            print(used_stock_list)
+            print(len(used_stock_list))
+            if len(used_stock_list) == 8:
+                print(f'You entered the following numbers - {used_stock_list}')
+                used_stock_inputted = True
+            else:
+                print('You entered the wrong number of numbers.'
+                      'Please enter 8 sets')
+        except ValueError:
+            print("You entered an invalid input - must be only numeric")
+            break
+    return used_stock_list
 
 
-update_stock_sheet()
+# def update_stock_sheet():
+#     """
+#     Update stock data worksheet
+#     """
+#     stock_list = validate_stock_input()
+#     print('Updating the stock sheet now...')
+#     stock.append_row(stock_list)
+
+
+# update_stock_sheet()
+
+

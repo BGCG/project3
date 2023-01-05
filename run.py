@@ -161,11 +161,18 @@ def update_adjusted_stock_sheet():
     """
     stock_list = validate_stock_input()
     used_stock_list = validate_used_stock_input()
-    print('Updating the adjusted stock sheet now...')
     subtracted_list = []
     for stock_value, used_stock_value in zip(stock_list, used_stock_list):
         subtracted_list.append(stock_value - used_stock_value)
-    adj_stock.append_row(subtracted_list)
+    print(subtracted_list)
+    for num in subtracted_list:
+        if num >= 0:
+            print('Updating the adjusted stock sheet now...')
+            adj_stock.append_row(subtracted_list)
+        else:
+            print('There has been an error - your calculated stock is '
+                  'negative - enter stocks again')
+        break
 
 
 update_adjusted_stock_sheet()

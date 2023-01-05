@@ -155,4 +155,17 @@ def validate_used_stock_input():
 
 # update_stock_sheet()
 
+def update_adjusted_stock_sheet():
+    """
+    Update adjusted stock data worksheet
+    """
+    stock_list = validate_stock_input()
+    used_stock_list = validate_used_stock_input()
+    print('Updating the adjusted stock sheet now...')
+    subtracted_list = []
+    for stock_value, used_stock_value in zip(stock_list, used_stock_list):
+        subtracted_list.append(stock_value - used_stock_value)
+    adj_stock.append_row(subtracted_list)
 
+
+update_adjusted_stock_sheet()

@@ -98,7 +98,7 @@ def validate_stock_input():
     while stock_inputted is False:
         try:
             print('Please input the blood stock today in eight digits '
-                  'seperated by a space and no comma between')
+                  'seperated by a space and no commas between')
             stock_input = input('Please enter the number of donations'
                                 ' collected today: ').split()
             stock_list = [int(item) for item in stock_input]
@@ -108,19 +108,21 @@ def validate_stock_input():
                 print(f'You entered the following numbers - {stock_list}')
                 stock_inputted = True
             else:
-                print('You enter the wrong number of numbers.' 
+                print('You enter the wrong number of numbers.'
                       'Please enter 8 sets')
         except ValueError:
             print("You entered an invalid input - must be only numeric")
             break
-
-
-validate_stock_input()
+    return stock_list
 
 
 def update_stock_sheet():
     """
     Update stock data worksheet
     """
-    pass
+    print('Updating the stock sheet now...')
+    stock_list = validate_stock_input()
+    stock.append_row(stock_list)
 
+
+update_stock_sheet()

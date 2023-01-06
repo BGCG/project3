@@ -169,14 +169,12 @@ def update_adjusted_stock_sheet():
     for stock_value, used_stock_value in zip(stock_list, used_stock_list):
         subtracted_list.append(stock_value - used_stock_value)
     print(subtracted_list)
-    for num in subtracted_list:
-        if num < 0:
-            print('There has been an error - your calculated stock is '
-                  'negative - enter stocks again')
-        else:
-            print('Updating the adjusted stock sheet now...')
-            adj_stock.append_row(subtracted_list)
-            print(num)
+    if any(num < 0 for num in subtracted_list):
+        print('There has been an error - your calculated adjusted stock is '
+              'negative - enter stocks again')
+    else:
+        print('Updating the adjusted stock sheet now...')
+        adj_stock.append_row(subtracted_list)
 
 
 update_adjusted_stock_sheet()

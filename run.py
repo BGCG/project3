@@ -176,6 +176,33 @@ def update_adjusted_stock_sheet():
     else:
         print('Updating the adjusted stock sheet now...')
         adj_stock.append_row(subtracted_list)
+    return subtracted_list
 
 
-update_adjusted_stock_sheet()
+def alert_user():
+    """
+    Alerts user if they need to inform donor cohort for further donations
+    """
+    subtracted_list = update_adjusted_stock_sheet()
+    if any(num < 5 for num in subtracted_list):
+        if subtracted_list[0] < 5:
+            print('Please alert donor cohort 1 - low on A positive blood')
+        if subtracted_list[1] < 5:
+            print('Please alert donor cohort 2 - low on A negative blood')
+        if subtracted_list[2] < 5:
+            print('Please alert donor cohort 3 - low on B positive blood')
+        if subtracted_list[3] < 5:
+            print('Please alert donor cohort 4 - low on B negative blood')
+        if subtracted_list[4] < 5:
+            print('Please alert donor cohort 5 - low on AB positive blood')
+        if subtracted_list[5] < 5:
+            print('Please alert donor cohort 6 - low on AB negative blood')
+        if subtracted_list[6] < 5:
+            print('Please alert donor cohort 7 - low on O positive blood')
+        if subtracted_list[7] < 5:
+            print('Please alert donor cohort 8 - low on O negative blood')
+    else:
+        print('Stock is sufficiently full for future donations')
+
+
+alert_user()

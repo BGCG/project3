@@ -100,9 +100,9 @@ def validate_stock_input():
     while stock_inputted is False:
         try:
             print('Please input the blood stock today in eight digits '
-                  'seperated by a space and no commas between')
+                  'seperated by a space with commas between')
             stock_input = input('Please enter the number of donations'
-                                ' collected today: ').split()
+                                ' collected today: ').split(',')
             stock_list = [int(item) for item in stock_input]
             print(stock_list)
             print(len(stock_list))
@@ -117,6 +117,7 @@ def validate_stock_input():
                 stock_inputted = True
         except ValueError:
             print("You entered an invalid input - must be only numeric")
+        break
     return stock_list
 
 
@@ -128,9 +129,9 @@ def validate_used_stock_input():
     while used_stock_inputted is False:
         try:
             print('Please input the used blood stock today in eight digits '
-                  'seperated by a space and no commas between')
+                  'seperated by a space with commas between')
             used_stock_input = input('Please enter the nummber of'
-                                     ' used donations: ').split()
+                                     ' used donations: ').split(',')
             used_stock_list = [int(item) for item in used_stock_input]
             print(used_stock_list)
             print(len(used_stock_list))

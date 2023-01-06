@@ -106,15 +106,17 @@ def validate_stock_input():
             stock_list = [int(item) for item in stock_input]
             print(stock_list)
             print(len(stock_list))
-            if len(stock_list) == 8:
-                print(f'You entered the following numbers - {stock_list}')
-                stock_inputted = True
-            else:
+            if any(num < 0 for num in stock_list):
+                print('One or more of the numbers are negative -'
+                      'please ensure they are all positive')
+            elif len(stock_list) != 8:
                 print('You entered the wrong number of numbers.'
                       'Please enter 8 sets')
+            else:
+                print(f'You entered the following numbers - {stock_list}')
+                stock_inputted = True
         except ValueError:
             print("You entered an invalid input - must be only numeric")
-            break
     return stock_list
 
 
@@ -132,15 +134,17 @@ def validate_used_stock_input():
             used_stock_list = [int(item) for item in used_stock_input]
             print(used_stock_list)
             print(len(used_stock_list))
-            if len(used_stock_list) == 8:
-                print(f'You entered the following numbers - {used_stock_list}')
-                used_stock_inputted = True
-            else:
+            if any(num < 0 for num in used_stock_list):
+                print('One or more of the numbers are negative -'
+                      'please ensure they are all positive')
+            elif len(used_stock_list) != 8:
                 print('You entered the wrong number of numbers.'
                       'Please enter 8 sets')
+            else:
+                print(f'You entered the following numbers - {used_stock_list}')
+                used_stock_inputted = True
         except ValueError:
             print("You entered an invalid input - must be only numeric")
-            break
     return used_stock_list
 
 
@@ -166,13 +170,13 @@ def update_adjusted_stock_sheet():
         subtracted_list.append(stock_value - used_stock_value)
     print(subtracted_list)
     for num in subtracted_list:
-        if num >= 0:
-            print('Updating the adjusted stock sheet now...')
-            adj_stock.append_row(subtracted_list)
-        else:
+        if num < 0:
             print('There has been an error - your calculated stock is '
                   'negative - enter stocks again')
-        break
+        else:
+            print('Updating the adjusted stock sheet now...')
+            adj_stock.append_row(subtracted_list)
+            print(num)
 
 
 update_adjusted_stock_sheet()

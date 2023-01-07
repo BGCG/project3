@@ -35,9 +35,9 @@ def validate_abo_data():
         try:
             print('Please enter the ABO blood type followed by Rh status '
                   'i.e. APOS, ONEG, ABPOS')
-            abo_input = str(input('Enter the ABO blood type: ')).strip()
+            abo_input = str(input('Enter the ABO blood type: ')).strip().upper()
             if abo_input.upper() in options:
-                print(f'The blood type you entered was {abo_input.upper()}')
+                print(f'The blood type you entered was {abo_input}')
                 abo_inputted = True
                 donations.update_acell('A8', abo_input.upper())
             else:
@@ -47,9 +47,22 @@ def validate_abo_data():
         return abo_input
 
 
-validate_abo_data()
+abo_value = validate_abo_data()
 
 
+def check_stock():
+    """
+    Check stock and provides feedback to user of specific blood type
+    """
+    headers = stock_check.row_values(1)
+    values = stock_check_data[1:]
+    blood_data = {"data": [dict(zip(headers, row)) for row in values if
+                  abo_value in row]}
+    print(blood_data)
+    print(abo_value)
+
+
+check_stock()
 # validate_abo_data()
 
 # DONATIONS_DATA = validate_abo_data()

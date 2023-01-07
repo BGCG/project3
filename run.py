@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+import pprint
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -35,7 +36,7 @@ def validate_abo_data():
         try:
             print('Please enter the ABO blood type followed by Rh status '
                   'i.e. APOS, ONEG, ABPOS')
-            abo_input = str(input('Enter the ABO blood type: ')).strip().upper()
+            abo_input = str(input('Enter blood type: ')).strip().upper()
             if abo_input.upper() in options:
                 print(f'The blood type you entered was {abo_input}')
                 abo_inputted = True
@@ -58,8 +59,10 @@ def check_stock():
     values = stock_check_data[1:]
     blood_data = {"data": [dict(zip(headers, row)) for row in values if
                   abo_value in row]}
-    print(blood_data)
-    print(abo_value)
+    print(f'The blood stock for {abo_value} is as follows - ')
+    print(pprint.pformat(str(blood_data).replace("'", "")
+          .replace(')', '').replace('(', '').replace('[', '')
+          .replace(']', '').replace("data: ", "")))
 
 
 check_stock()

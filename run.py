@@ -62,7 +62,7 @@ def check_stock():
     print(f'The blood stock for {abo_value} is as follows - ')
     print(pprint.pformat(str(blood_data).replace("'", "").replace('[', '')
           .replace(']', '')))
-    # print(blood_data)
+    print(blood_data)
     return blood_data
 
 
@@ -73,11 +73,11 @@ def stock_low_alert():
     blood_stock = check_stock()
     print(blood_stock[0]['Units'])
     units = int(blood_stock[0]['Units'])
-    print(units)
-    # for unit in units:
-    #     if unit < 10:
-    #         print(f'Your stocks of {abo_value} are low - please inform the'
-    #               'relevant donor cohort to refresh the donation')
+    print(type(units))
+    for unit in units:
+        if unit < 10:
+            print(f'Your stocks of {abo_value} are low - please inform the'
+                  'relevant donor cohort to refresh the donation')
     # print(unit)
     # for value in blood_stock.get('Units'):
     #     if value < 20:

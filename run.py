@@ -16,33 +16,38 @@ SHEET = GSPREAD_CLIENT.open('project3')
 donations = SHEET.worksheet('donations')
 stock = SHEET.worksheet('stock')
 adj_stock = SHEET.worksheet('adjusted_stock')
+stock_check = SHEET.worksheet('stock_check')
 
 donation_data = donations.get_all_values()
 stock_data = stock.get_all_values()
 adj_stock_data = adj_stock.get_all_values()
+stock_check_data = stock_check.get_all_values()
 
-# options = ['APOS', 'ANEG', 'BPOS', 'BNEG', 'ABPOS', 'ABNEG', 'OPOS', 'ONEG']
+options = ['APOS', 'ANEG', 'BPOS', 'BNEG', 'ABPOS', 'ABNEG', 'OPOS', 'ONEG']
 
 
-# def validate_abo_data():
-#     """
-#     Validate blood type input data and add to sheet
-#     """
-#     abo_inputted = False
-#     while abo_inputted is False:
-#         try:
-#             print('Please enter the ABO blood type followed by Rh status '
-#                   'i.e. APOS, ONEG, ABPOS')
-#             abo_input = str(input('Enter the ABO blood type: '))
-#             if abo_input.upper() in options:
-#                 print(f'The blood type you entered was {abo_input.upper()}')
-#                 abo_inputted = True
-#                 donations.update_acell('A8', abo_input.upper())
-#             else:
-#                 print("You entered an invalid input")
-#             # return abo_input
-#         except ValueError:
-#             print("You entered an invalid input")
+def validate_abo_data():
+    """
+    Validate blood type input data and add to sheet
+    """
+    abo_inputted = False
+    while abo_inputted is False:
+        try:
+            print('Please enter the ABO blood type followed by Rh status '
+                  'i.e. APOS, ONEG, ABPOS')
+            abo_input = str(input('Enter the ABO blood type: ')).strip()
+            if abo_input.upper() in options:
+                print(f'The blood type you entered was {abo_input.upper()}')
+                abo_inputted = True
+                donations.update_acell('A8', abo_input.upper())
+            else:
+                print("You entered an invalid input")
+        except ValueError:
+            print("You entered an invalid input")
+        return abo_input
+
+
+validate_abo_data()
 
 
 # validate_abo_data()
@@ -92,117 +97,139 @@ adj_stock_data = adj_stock.get_all_values()
 # check_stock()
 
 
-def validate_stock_input():
-    """
-    Validate user input data for stock data
-    """
-    stock_inputted = False
-    while stock_inputted is False:
-        try:
-            print('Please input the blood stock today in eight digits '
-                  'seperated by a space with commas between')
-            stock_input = input('Please enter the number of donations'
-                                ' collected today: ').split(',')
-            stock_list = [int(item) for item in stock_input]
-            print(stock_list)
-            print(len(stock_list))
-            if any(num < 0 for num in stock_list):
-                print('One or more of the numbers are negative -'
-                      'please ensure they are all positive')
-            elif len(stock_list) != 8:
-                print('You entered the wrong number of numbers.'
-                      'Please enter 8 sets')
-            else:
-                print(f'You entered the following numbers - {stock_list}')
-                stock_inputted = True
-        except ValueError:
-            print("You entered an invalid input - must be only numeric")
-        break
-    return stock_list
-
-
-def validate_used_stock_input():
-    """
-    Validate used stock input
-    """
-    used_stock_inputted = False
-    while used_stock_inputted is False:
-        try:
-            print('Please input the used blood stock today in eight digits '
-                  'seperated by a space with commas between')
-            used_stock_input = input('Please enter the nummber of'
-                                     ' used donations: ').split(',')
-            used_stock_list = [int(item) for item in used_stock_input]
-            print(used_stock_list)
-            print(len(used_stock_list))
-            if any(num < 0 for num in used_stock_list):
-                print('One or more of the numbers are negative -'
-                      'please ensure they are all positive')
-            elif len(used_stock_list) != 8:
-                print('You entered the wrong number of numbers.'
-                      'Please enter 8 sets')
-            else:
-                print(f'You entered the following numbers - {used_stock_list}')
-                used_stock_inputted = True
-        except ValueError:
-            print("You entered an invalid input - must be only numeric")
-    return used_stock_list
-
-
-# def update_stock_sheet():
+# def validate_stock_input():
 #     """
-#     Update stock data worksheet
+#     Validate user input data for stock data
+#     """
+#     stock_inputted = False
+#     while stock_inputted is False:
+#         try:
+#             print('Please input the blood stock today in eight digits '
+#                   'seperated by commas')
+#             stock_input = input('Please enter the number of donations'
+#                                 ' collected today: ').split(',')
+#             stock_list = [int(item) for item in stock_input]
+#             # print(stock_list)
+#             # print(len(stock_list))
+#             if any(num < 0 for num in stock_list):
+#                 print('One or more of the numbers are negative -'
+#                       'please ensure they are all positive')
+#             elif len(stock_list) != 8:
+#                 print('You entered the wrong number of numbers.'
+#                       'Please enter 8 sets')
+#             else:
+#                 print(f'You entered the following numbers: {stock_list}')
+#                 stock_inputted = True
+#         except ValueError:
+#             print("You entered an invalid input - must be only numeric")
+#         break
+#     return stock_list
+
+
+# def validate_used_stock_input():
+#     """
+#     Validate used stock input
+#     """
+#     used_stock_inputted = False
+#     while used_stock_inputted is False:
+#         try:
+#             print('Please input the used blood stock today in eight digits '
+#                   'seperated by commas')
+#             used_stock_input = input('Please enter the nummber of'
+#                                      ' used donations: ').split(',')
+#             used_stock_list = [int(item) for item in used_stock_input]
+#             print(used_stock_list)
+#             print(len(used_stock_list))
+#             if any(num < 0 for num in used_stock_list):
+#                 print('One or more of the numbers are negative -'
+#                       'please ensure they are all positive')
+#             elif len(used_stock_list) != 8:
+#                 print('You entered the wrong number of numbers.'
+#                       'Please enter 8 sets')
+#             else:
+#                 print(f'You entered the following numbers:{used_stock_list}')
+#                 used_stock_inputted = True
+#         except ValueError:
+#             print("You entered an invalid input - must be only numeric")
+#     return used_stock_list
+
+
+# # def update_stock_sheet():
+# #     """
+# #     Update stock data worksheet
+# #     """
+# #     stock_list = validate_stock_input()
+# #     print('Updating the stock sheet now...')
+# #     stock.append_row(stock_list)
+
+
+# # update_stock_sheet()
+
+# def update_adjusted_stock_sheet():
+#     """
+#     Update adjusted stock data worksheet
 #     """
 #     stock_list = validate_stock_input()
-#     print('Updating the stock sheet now...')
-#     stock.append_row(stock_list)
+#     used_stock_list = validate_used_stock_input()
+#     subtracted_list = []
+#     for stock_value, used_stock_value in zip(stock_list, used_stock_list):
+#         subtracted_list.append(stock_value - used_stock_value)
+#     print(subtracted_list)
+#     if any(num < 0 for num in subtracted_list):
+#         print('There has been an error - your calculated adjusted stock is '
+#               'negative - enter stocks again')
+#     else:
+#         print('Updating the adjusted stock sheet now...')
+#         adj_stock.append_row(subtracted_list)
+#     return subtracted_list
 
 
-# update_stock_sheet()
-
-def update_adjusted_stock_sheet():
-    """
-    Update adjusted stock data worksheet
-    """
-    stock_list = validate_stock_input()
-    used_stock_list = validate_used_stock_input()
-    subtracted_list = []
-    for stock_value, used_stock_value in zip(stock_list, used_stock_list):
-        subtracted_list.append(stock_value - used_stock_value)
-    print(subtracted_list)
-    if any(num < 0 for num in subtracted_list):
-        print('There has been an error - your calculated adjusted stock is '
-              'negative - enter stocks again')
-    else:
-        print('Updating the adjusted stock sheet now...')
-        adj_stock.append_row(subtracted_list)
-    return subtracted_list
-
-
-def alert_user():
-    """
-    Alerts user if they need to inform donor cohort for further donations
-    """
-    subtracted_list = update_adjusted_stock_sheet()
-    if any(num < 5 for num in subtracted_list):
-        if subtracted_list[0] < 5:
-            print('Please alert donor cohort 1 - low on A positive blood')
-        if subtracted_list[1] < 5:
-            print('Please alert donor cohort 2 - low on A negative blood')
-        if subtracted_list[2] < 5:
-            print('Please alert donor cohort 3 - low on B positive blood')
-        if subtracted_list[3] < 5:
-            print('Please alert donor cohort 4 - low on B negative blood')
-        if subtracted_list[4] < 5:
-            print('Please alert donor cohort 5 - low on AB positive blood')
-        if subtracted_list[5] < 5:
-            print('Please alert donor cohort 6 - low on AB negative blood')
-        if subtracted_list[6] < 5:
-            print('Please alert donor cohort 7 - low on O positive blood')
-        if subtracted_list[7] < 5:
-            print('Please alert donor cohort 8 - low on O negative blood')
-    else:
-        print('Stock is sufficiently full for future donations')
+# def alert_user():
+#     """
+#     Alerts user if they need to inform donor cohort for further donations
+#     """
+#     subtracted_list = update_adjusted_stock_sheet()
+#     if any(num < 5 for num in subtracted_list):
+#         if subtracted_list[0] < 5:
+#             print('Please alert donor cohort 1 - low on A positive blood')
+#         if subtracted_list[1] < 5:
+#             print('Please alert donor cohort 2 - low on A negative blood')
+#         if subtracted_list[2] < 5:
+#             print('Please alert donor cohort 3 - low on B positive blood')
+#         if subtracted_list[3] < 5:
+#             print('Please alert donor cohort 4 - low on B negative blood')
+#         if subtracted_list[4] < 5:
+#             print('Please alert donor cohort 5 - low on AB positive blood')
+#         if subtracted_list[5] < 5:
+#             print('Please alert donor cohort 6 - low on AB negative blood')
+#         if subtracted_list[6] < 5:
+#             print('Please alert donor cohort 7 - low on O positive blood')
+#         if subtracted_list[7] < 5:
+#             print('Please alert donor cohort 8 - low on O negative blood')
+#     else:
+#         print('Stock is sufficiently full for future blood transfusions')
 
 
-alert_user()
+# alert_user()
+
+
+# def alt_alert_function():
+#     """
+#     Alerts user if they need to inform donor cohort for further donations
+#     """
+#     subtracted_list = update_adjusted_stock_sheet()
+#     if any(num < 5 for num in subtracted_list):
+#         cohort_list = []
+#         # blood = ['A positive', 'A negative', 'B positive', 'B negative,'
+#                    'AB positive', 'AB negative', 'O positive', 'O negative']
+#         for val in subtracted_list:
+#             if val < 5:
+#                 cohort_list.append(val)
+#                 print(cohort_list)
+#                 # print(f'Please alert donor cohort {cohort_list}' 
+#                          '- low on {blood} blood')
+#     else:
+#         print('Stock is sufficiently full for future blood transfusions')
+
+
+# alt_alert_function()

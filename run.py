@@ -57,27 +57,33 @@ def check_stock():
     """
     headers = stock_check.row_values(1)
     values = stock_check_data[1:]
+    # print(values[0][2])
+    abo_value_lst = [item for item in values if abo_value in item]
+    unit_lst = [int(item[1]) for item in abo_value_lst]
+    print(unit_lst)
     blood_data = [dict(zip(headers, row)) for row in values if
                   abo_value in row]
     print(f'The blood stock for {abo_value} is as follows - ')
     print(pprint.pformat(str(blood_data).replace("'", "").replace('[', '')
           .replace(']', '')))
-    print(blood_data)
-    return blood_data
+    # print(blood_data)
+    return unit_lst
 
 
 def stock_low_alert():
     """
     Alerts user to whether blood is low of particular type
     """
-    blood_stock = check_stock()
-    print(blood_stock[0]['Units'])
-    units = int(blood_stock[0]['Units'])
-    print(type(units))
-    for unit in units:
-        if unit < 10:
-            print(f'Your stocks of {abo_value} are low - please inform the'
-                  'relevant donor cohort to refresh the donation')
+    unit_lst = check_stock()
+    if any(num < 10 for num in unit_lst):
+        print(f'You are running low on {abo_value} stock')
+    # print(blood_stock[0]['Units'])
+    # units = int(blood_stock[0]['Units'])
+    # print(type(units))
+    # for unit in units:
+    #     if unit < 10:
+    #         print(f'Your stocks of {abo_value} are low - please inform the'
+    #               'relevant donor cohort to refresh the donation')
     # print(unit)
     # for value in blood_stock.get('Units'):
     #     if value < 20:

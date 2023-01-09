@@ -87,6 +87,8 @@ def stock_low_alert():
         sample_bloodid = [bloodid_lst[i] for i in samples_index]
         print(sample_bloodid)
         print(f'The following ids are low in stock - {sample_bloodid}')
+    else:
+        print(f'You have sufficient stock of {abo_value}')
     # print(blood_stock[0]['Units'])
     # units = int(blood_stock[0]['Units'])
     # print(type(units))
@@ -117,7 +119,7 @@ def check_expiry():
                          .isocalendar() for item in exp_lst]
     if any(exp < todays_date for exp in exp_lst_formatted):
         print('You have stock that is expired - please discard')
-        samples_index = [i for i in range(len(exp_lst_formatted)) 
+        samples_index = [i for i in range(len(exp_lst_formatted))
                          if exp_lst_formatted[i] < todays_date]
         print(samples_index)
         sample_bloodid = [bloodid_lst[i] for i in samples_index]

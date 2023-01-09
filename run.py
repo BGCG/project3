@@ -102,10 +102,10 @@ def check_expiry():
     """
     Checks if certain stock is outwith expiry
     """
-    todays_date = date.today()
+    todays_date = date.today().isocalendar()
     print(todays_date)
     print(type(todays_date))
-
+    print(todays_date)
     # datet = '02-14-23'
     exp_lst = [item[2] for item in abo_value_lst]
     print(exp_lst)
@@ -118,11 +118,21 @@ def check_expiry():
     #     formatted_date = datetime.strptime(exp, "%m-%d-%y").date()
     # print(exp_lst[1])
 
-    exp_lst_formatted = [datetime.strptime(item, "%m-%d-%y").date() for item in exp_lst]
-    print(type(exp_lst_formatted[0]))
-    print(type(exp_lst_formatted))
+    exp_lst_formatted = [datetime.strptime(item, "%m-%d-%y").date()
+                         .isocalendar() for item in exp_lst]
+    
+    if any(exp < todays_date for exp in exp_lst_formatted):
+        print('You have stock that is expired - please discard')
+    else:
+        print(f'All {abo_value} stock is within expiry date')
+    
+    
+    # print(exp_lst_formatted[0].isoformat())
+    # print(exp_lst_formatted)
+    # print(exp_lst_formatted[0])
     # print(exp_lst_formatted)
     # print(type(exp_lst_formatted))
+    # print(type(exp_lst_formatted[0]))
     # print(exp_lst_formatted)
     # print(type(exp_lst_formatted))
 

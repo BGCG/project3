@@ -1,8 +1,7 @@
+import pprint
 from datetime import datetime, date
-import pandas as pd
 import gspread
 from google.oauth2.service_account import Credentials
-import pprint
 
 
 SCOPE = [

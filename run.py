@@ -102,7 +102,7 @@ def check_expiry():
 
     exp_lst_formatted = [datetime.strptime(item, "%m-%d-%y").date()
                          .isocalendar() for item in exp_lst]
-    
+
     if any(exp < todays_date for exp in exp_lst_formatted):
         print(f'You have {abo_value} stock that is expired')
         samples_index = [i for i in range(len(exp_lst_formatted))
@@ -116,3 +116,12 @@ def check_expiry():
 
 check_expiry()
 
+
+while True:
+    user_input = input('Would you like to check another blood type? '
+                       'Answer y/n: ').strip()
+    if user_input == 'y':
+        validate_abo_data()
+    else:
+        print('Thank you for using the blood tracker system.')
+        break

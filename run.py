@@ -54,7 +54,7 @@ def validate_abo_data():
 abo_value = validate_abo_data()
 values = stock_check_data[1:]
 abo_value_lst = [item for item in values if abo_value in item]
-
+bloodid_lst = [int(item[3]) for item in abo_value_lst]
 
 def check_stock():
     """
@@ -63,7 +63,7 @@ def check_stock():
     headers = stock_check.row_values(1)
     # print(values[0][2])
     unit_lst = [int(item[1]) for item in abo_value_lst]
-    bloodid_lst = [int(item[3]) for item in abo_value_lst]
+    
     print(bloodid_lst)
     print(unit_lst)
     blood_data = [dict(zip(headers, row)) for row in values if
@@ -82,6 +82,11 @@ def stock_low_alert():
     unit_lst = check_stock()
     if any(num < 10 for num in unit_lst):
         print(f'You are running low on {abo_value} stock')
+        samples_index = [i for i in range(len(unit_lst)) if unit_lst[i] < 10]
+        print(samples_index)
+        sample_bloodid = [bloodid_lst[i] for i in samples_index]
+        print(sample_bloodid)
+        print(f'The following ids are low in stock - {sample_bloodid}')
     # print(blood_stock[0]['Units'])
     # units = int(blood_stock[0]['Units'])
     # print(type(units))
@@ -93,6 +98,7 @@ def stock_low_alert():
     # for value in blood_stock.get('Units'):
     #     if value < 20:
     #         print('Stock running low')
+    return sample_bloodid
 
 
 stock_low_alert()
@@ -106,18 +112,8 @@ def check_expiry():
     print(todays_date)
     print(type(todays_date))
     print(todays_date)
-    # datet = '02-14-23'
     exp_lst = [item[2] for item in abo_value_lst]
     print(exp_lst)
-    # year needs to be in full
-    # expiration_date = datetime.strptime(exp_lst, "%m-%d-%y").date()
-    # print(expiration_date)
-    # print(type(expiration_date))
-    # exp_lst_formatted = [datetime.strptime(item, "%m-%d-%y").date() for item in exp_lst]
-    # for exp in exp_lst:
-    #     formatted_date = datetime.strptime(exp, "%m-%d-%y").date()
-    # print(exp_lst[1])
-
     exp_lst_formatted = [datetime.strptime(item, "%m-%d-%y").date()
                          .isocalendar() for item in exp_lst]
     
@@ -125,16 +121,6 @@ def check_expiry():
         print('You have stock that is expired - please discard')
     else:
         print(f'All {abo_value} stock is within expiry date')
-    
-    
-    # print(exp_lst_formatted[0].isoformat())
-    # print(exp_lst_formatted)
-    # print(exp_lst_formatted[0])
-    # print(exp_lst_formatted)
-    # print(type(exp_lst_formatted))
-    # print(type(exp_lst_formatted[0]))
-    # print(exp_lst_formatted)
-    # print(type(exp_lst_formatted))
 
 
 check_expiry()

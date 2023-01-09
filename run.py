@@ -29,6 +29,8 @@ stock_check_data = stock_check.get_all_values()
 
 options = ['APOS', 'ANEG', 'BPOS', 'BNEG', 'ABPOS', 'ABNEG', 'OPOS', 'ONEG']
 
+print('Welcome to the blood checker app!')
+
 
 def validate_abo_data():
     """
@@ -37,6 +39,8 @@ def validate_abo_data():
     abo_inputted = False
     while abo_inputted is False:
         try:
+            print('Please enter which blood type you would like to perform a'
+                  ' stock and epiry check on')
             print('Please enter the ABO blood type followed by Rh status '
                   'i.e. APOS, ONEG, ABPOS')
             abo_input = str(input('Enter blood type: ')).strip().upper()

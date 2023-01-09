@@ -56,6 +56,7 @@ values = stock_check_data[1:]
 abo_value_lst = [item for item in values if abo_value in item]
 bloodid_lst = [int(item[3]) for item in abo_value_lst]
 
+
 def check_stock():
     """
     Check stock and provides feedback to user of specific blood type
@@ -86,7 +87,7 @@ def stock_low_alert():
         print(samples_index)
         sample_bloodid = [bloodid_lst[i] for i in samples_index]
         print(sample_bloodid)
-        print(f'The following ids are low in stock - {sample_bloodid}')
+        print(f'The following blood id(s) are low in stock - {sample_bloodid}')
     else:
         print(f'You have sufficient stock of {abo_value}')
     # print(blood_stock[0]['Units'])
@@ -118,13 +119,13 @@ def check_expiry():
     exp_lst_formatted = [datetime.strptime(item, "%m-%d-%y").date()
                          .isocalendar() for item in exp_lst]
     if any(exp < todays_date for exp in exp_lst_formatted):
-        print('You have stock that is expired - please discard')
+        print(f'You have {abo_value} stock that is expired')
         samples_index = [i for i in range(len(exp_lst_formatted))
                          if exp_lst_formatted[i] < todays_date]
         print(samples_index)
         sample_bloodid = [bloodid_lst[i] for i in samples_index]
         print(sample_bloodid)
-        print(f'The id of the expired blood bag is - {sample_bloodid}. '
+        print(f'The id(s) of the expired stock is - {sample_bloodid}. '
               'Please discard this bag.')
     else:
         print(f'All {abo_value} stock is within expiry date')

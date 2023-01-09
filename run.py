@@ -48,7 +48,8 @@ def validate_abo_data():
                 abo_inputted = True
                 donations.update_acell('A8', abo_input.upper())
             else:
-                print("You entered an invalid input")
+                print("You entered an invalid input - try again")
+                validate_abo_data()
         except ValueError:
             print("You entered an invalid input")
         return abo_input
@@ -122,6 +123,10 @@ while True:
                        'Answer y/n: ').strip()
     if user_input == 'y':
         validate_abo_data()
+        stock_low_alert()
+        check_expiry()
     else:
         print('Thank you for using the blood tracker system.')
         break
+
+

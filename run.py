@@ -62,17 +62,13 @@ def check_stock():
     Check stock and provides feedback to user of specific blood type
     """
     headers = stock_check.row_values(1)
-    # print(values[0][2])
     unit_lst = [int(item[1]) for item in abo_value_lst]
-    
-    print(bloodid_lst)
-    print(unit_lst)
+
     blood_data = [dict(zip(headers, row)) for row in values if
                   abo_value in row]
     print(f'The blood stock for {abo_value} is as follows - ')
     print(pprint.pformat(str(blood_data).replace("'", "").replace('[', '')
           .replace(']', '')))
-    # print(blood_data)
     return unit_lst
 
 
@@ -84,9 +80,7 @@ def stock_low_alert():
     if any(num < 10 for num in unit_lst):
         print(f'You are running low on {abo_value} stock')
         samples_index = [i for i in range(len(unit_lst)) if unit_lst[i] < 10]
-        print(samples_index)
         sample_bloodid = [bloodid_lst[i] for i in samples_index]
-        print(sample_bloodid)
         print(f'The following blood id(s) are low in stock - {sample_bloodid}')
     else:
         print(f'You have sufficient stock of {abo_value}')
@@ -111,20 +105,17 @@ def check_expiry():
     Checks if certain stock is outwith expiry
     """
     todays_date = date.today().isocalendar()
-    print(todays_date)
-    print(type(todays_date))
-    print(todays_date)
+
     exp_lst = [item[2] for item in abo_value_lst]
-    print(exp_lst)
+
     exp_lst_formatted = [datetime.strptime(item, "%m-%d-%y").date()
                          .isocalendar() for item in exp_lst]
+    
     if any(exp < todays_date for exp in exp_lst_formatted):
         print(f'You have {abo_value} stock that is expired')
         samples_index = [i for i in range(len(exp_lst_formatted))
                          if exp_lst_formatted[i] < todays_date]
-        print(samples_index)
         sample_bloodid = [bloodid_lst[i] for i in samples_index]
-        print(sample_bloodid)
         print(f'The id(s) of the expired stock is - {sample_bloodid}. '
               'Please discard this bag.')
     else:

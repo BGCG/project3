@@ -100,9 +100,9 @@ Testing whether correct values are reported to user
 
 Love sandwiches for the intial set up and wire up of the API for which I had no clue how to do this before walking through the tutorial. 
 
-List comprehesion - I have used list comprehension throughout this project. The following resources were useful reminders how to perform list comprehension - 
+I have used list comprehension throughout this project. The following resource from [W3 Schools](https://www.w3schools.com/python/python_lists_comprehension.asp) was a useful reminder on how to perform list comprehensions.
 
-Datetime - I was a little nervous about using date time in my program as I heard that they are notoriously difficult to work with in programming. A little reading online and usage of the datetime library was helpful. I converted the date into isocalendar format which forms into a tuple object. This was then used for comparision with todays date, converted into the sample iscalendar format.
+I was a little nervous about using date time in my program as I heard that they are notoriously difficult to work with in programming. A little reading online and usage of the datetime library was helpful. This [stack overflow](https://stackoverflow.com/questions/36424255/python-iterating-through-a-list-using-datetime-strptime) post was partiuclarly helpful in my figuring out how to convert the expiry dates from the google sheets into a more workable format. I converted the date into isocalendar format which forms into a tuple object. This was then used for comparision with todays date, converted into the sample iscalendar format.
 
 Creation of dictionarys from two lists - i found this resource helpful in me figuring this out. 
 

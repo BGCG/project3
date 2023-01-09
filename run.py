@@ -1,6 +1,9 @@
+from datetime import datetime, date
+import pandas as pd
 import gspread
 from google.oauth2.service_account import Credentials
 import pprint
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -49,6 +52,8 @@ def validate_abo_data():
 
 
 abo_value = validate_abo_data()
+values = stock_check_data[1:]
+abo_value_lst = [item for item in values if abo_value in item]
 
 
 def check_stock():
@@ -56,10 +61,10 @@ def check_stock():
     Check stock and provides feedback to user of specific blood type
     """
     headers = stock_check.row_values(1)
-    values = stock_check_data[1:]
     # print(values[0][2])
-    abo_value_lst = [item for item in values if abo_value in item]
     unit_lst = [int(item[1]) for item in abo_value_lst]
+    bloodid_lst = [int(item[3]) for item in abo_value_lst]
+    print(bloodid_lst)
     print(unit_lst)
     blood_data = [dict(zip(headers, row)) for row in values if
                   abo_value in row]
@@ -91,6 +96,38 @@ def stock_low_alert():
 
 
 stock_low_alert()
+
+
+def check_expiry():
+    """
+    Checks if certain stock is outwith expiry
+    """
+    todays_date = date.today()
+    print(todays_date)
+    print(type(todays_date))
+
+    # datet = '02-14-23'
+    exp_lst = [item[2] for item in abo_value_lst]
+    print(exp_lst)
+    # year needs to be in full
+    # expiration_date = datetime.strptime(exp_lst, "%m-%d-%y").date()
+    # print(expiration_date)
+    # print(type(expiration_date))
+    # exp_lst_formatted = [datetime.strptime(item, "%m-%d-%y").date() for item in exp_lst]
+    # for exp in exp_lst:
+    #     formatted_date = datetime.strptime(exp, "%m-%d-%y").date()
+    # print(exp_lst[1])
+
+    exp_lst_formatted = [datetime.strptime(item, "%m-%d-%y").date() for item in exp_lst]
+    print(type(exp_lst_formatted[0]))
+    print(type(exp_lst_formatted))
+    # print(exp_lst_formatted)
+    # print(type(exp_lst_formatted))
+    # print(exp_lst_formatted)
+    # print(type(exp_lst_formatted))
+
+
+check_expiry()
 
 
 # validate_abo_data()

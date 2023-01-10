@@ -15,15 +15,8 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('project3')
 
-# global variables as caps
-donations = SHEET.worksheet('donations')
-stock = SHEET.worksheet('stock')
-adj_stock = SHEET.worksheet('adjusted_stock')
 stock_check = SHEET.worksheet('stock_check')
 
-donation_data = donations.get_all_values()
-stock_data = stock.get_all_values()
-adj_stock_data = adj_stock.get_all_values()
 stock_check_data = stock_check.get_all_values()
 
 options = ['APOS', 'ANEG', 'BPOS', 'BNEG', 'ABPOS', 'ABNEG', 'OPOS', 'ONEG']
@@ -38,7 +31,7 @@ def validate_abo_data():
     abo_inputted = False
 
     while abo_inputted is False:
-        
+
         print('Please enter the ABO blood type followed by Rh status '
               'i.e. APOS, ONEG, ABPOS')
         abo_input = str(input('Enter the ABO blood type: ')).upper().strip()
@@ -49,7 +42,7 @@ def validate_abo_data():
             abo_inputted = True
         else:
             print('Sorry your input was invalid')
-    
+
     return abo_input
 
 

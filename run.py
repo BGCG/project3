@@ -39,7 +39,7 @@ def validate_abo_data():
 
         print('Please enter the ABO blood type followed by Rh status '
               'i.e. APOS, ONEG, ABPOS\n')
-        abo_input = str(input('Enter the blood type here: ')).upper().strip()
+        abo_input = str(input('Enter the blood type here: \n')).upper().strip()
 
         if abo_input in options:
             print(f'The blood type you entered was {abo_input}')
@@ -133,9 +133,8 @@ main()
 # Code to allow user to restart stock check if they wish or exit
 
 while True:
-    user_input = input('\nWould you like to check another blood type? '
-                       'Answer y/n: ').lower().strip()
-    print("\n")
+    user_input = input('Would you like to check another blood type? '
+                       'Answer y/n: \n').lower().strip()
     if user_input == 'y':
         main()
     elif user_input == 'n':

@@ -35,31 +35,74 @@ def validate_abo_data():
     """
     Validate blood type input data and add to sheet
     """
-    print('Please enter which blood type you would like to perform a'
-          ' stock and epiry check on')
-    print('Please enter the ABO blood type followed by Rh status '
-          'i.e. APOS, ONEG, ABPOS')
-    abo_input = str(input('Enter blood type: ')).strip().upper()
-    if validate_data(abo_input):
-        print("Data in correct format!")
-        return abo_input
-
-
-def validate_data(abo_data):
-    """
-    Validate blood type input data and add to sheet
-    """
-    try:
-        if abo_data not in options:
+    abo_inputted = False
+    while abo_inputted is False:
+        try:
+            print('Please enter the ABO blood type followed by Rh status '
+                  'i.e. APOS, ONEG, ABPOS')
+            abo_input = str(input('Enter the ABO blood type: ')).upper().strip()
+            if abo_input.upper() in options:
+                print(f'The blood type you entered was {abo_input.upper()}')
+                print('Your input was valid')
+                abo_inputted = True
+            else:
+                print('Sorry your input was invalid')
+        except ValueError:
             print("You entered an invalid input")
-        else:
-            print("You entered an invalid input - try again")
-    except ValueError:
-        print("Data is invalid")
-        return False
-    return True
+    return abo_input
+
+# def validate_abo_data():
+#     """
+#     Validate blood type input data and add to sheet
+#     """
+#     print('Please enter which blood type you would like to perform a'
+#           ' stock and epiry check on')
+#     print('Please enter the ABO blood type followed by Rh status '
+#           'i.e. APOS, ONEG, ABPOS')
+#     abo_input = str(input('Enter blood type: ')).strip().upper()
+#     corr_input = False
+#     while not corr_input:
+#         try:
+#             if abo_input in options:
+#                 # is abo input NOT in options
+#                 print('Valid input')
+#                 corr_input = True
+#             else:
+#                 print('You entered the wrong input - try again')
+#         except ValueError():
+#             print('You entered a number - please enter a character')
+
+#     return abo_input
 
 
+
+# def validate_abo_data():
+#     """
+#     Validate blood type input data and add to sheet
+#     """
+#     print('Please enter which blood type you would like to perform a'
+#           ' stock and epiry check on')
+#     print('Please enter the ABO blood type followed by Rh status '
+#           'i.e. APOS, ONEG, ABPOS')
+#     abo_input = str(input('Enter blood type: ')).strip().upper()
+#     if validate_data(abo_input):
+#         print("Data in correct format!")
+#     return abo_input
+
+
+# def validate_data(abo_data):
+#     """
+#     Validate blood type input data and add to sheet
+#     """
+#     try:
+#         if abo_data not in options:
+#             print("You entered an invalid input")
+#         else:
+#             print("You entered an invalid input - try again")
+#     except ValueError:
+#         print("Data is invalid")
+#         return False
+#     return True
 def check_stock(abo_data, abo_lst):
     """
     Check stock and provides feedback to user of specific blood type

@@ -95,7 +95,7 @@ To integrate with input of donations data so the stocks can be adjusted based on
 
 ## Testing 
 
-The main areas of testing where ensuring that the user input was validated effectively. I tested the input by puting in the wrong string or similar strings (ie POS) to the input to determine how robust the validation was, which always activated the invalid response. I wrote a conditional statement that detects whether the user has entered an blood type exactly as stated in the options list. I did want some leaniancy on the users part, such as if there was an accidental space before or after the input word, as this couldn't be misunderstood as a different input for which I used the strip() method. Additionally, it doesn't matter whether the user used upper, lower or captilised input as this would not change the interpretation of the user input. I converted all a user inputs to uppercase using the upper() method. Not converting the user input to uppercase would result the invalid input message showing, as I found when I forgot to include it in the testing process. Furthermore, I didn't allow white space mid word in options, ie 'A B POS' as this might be misinterpretted by the program as BPOS when in fact the user wanted results for ABPOS. 
+The main areas of testing where ensuring that the user input was validated effectively. I tested the input by puting in the wrong string or similar strings (ie POS) to the input to determine how robust the validation was, which always activated the invalid response. I wrote a conditional statement that detects whether the user has entered an blood type exactly as stated in the options list. I did want some leaniancy on the users part, such as if there was an accidental space before or after the input word, as this couldn't be misunderstood as a different input for which I used the `strip()` method. Additionally, it doesn't matter whether the user used upper, lower or captilised input as this would not change the interpretation of the user input. I converted all a user inputs to uppercase using the `upper()` method. Not converting the user input to uppercase would result the invalid input message showing, as I found when I forgot to include it in the testing process. Furthermore, I didn't allow white space mid word in options, ie 'A B POS' as this might be misinterpretted by the program as BPOS when in fact the user wanted results for ABPOS. 
 
 With regards to the validate input function, I did have some issues that the rest of the script would still activate even if the invalid response was activated and would not surprisingly report None and empty lists for stock level reports. I therefore fixed my conditional statement in the validate input function so that the while loop would only be exited if the user input was in the options lists, by using of boolean logic. 
 
@@ -113,7 +113,7 @@ An additional area of testing was whether correct values are reported to user. I
 
 ### Content 
 
-Love sandwiches for the intial set up and wire up of the API for which I had no clue how to do this before walking through the tutorial. 
+Love sandwiches Code Institute project for the help with intial set up and wire up of the API for which I had no clue how to do this before walking through the tutorial. 
 
 I have used list comprehension throughout this project. The following resource from [W3 Schools](https://www.w3schools.com/python/python_lists_comprehension.asp) was a useful reminder on how to perform list comprehensions.
 
@@ -123,9 +123,9 @@ Creation of dictionarys from two lists - I found the reply from Matryn Peters on
 
 ### Libraries and frameworks used
 
-* GitPod
-* GitHub
-* Heroku 
+* GitPod - the developer platform was used as a space to code my site which was then pushed to Github
+* GitHub - to store the app prior to connecting Heroku
+* Heroku - for deployment to live terminal
 
 ### Deployment 
 
@@ -133,7 +133,7 @@ Creation of dictionarys from two lists - I found the reply from Matryn Peters on
 * Create requirements file by entering pip3 freeze > requirements.txt into terminal and commit and push changes 
 * Go to heroku.com and go to dashboard and create new app 
 * New app was named blood-tracker-app
-* Go to settings tab and create config vars - KEY:CREDS VALUE:(all contents of creds.json on gitpod), KEY:PORT VALUE:8000
+* Go to settings tab and create config vars - KEY:CREDS VALUE:(all contents of creds.json), KEY:PORT VALUE:8000
 * Add buildpacks - heroku/python and heroku/nodejs - in that order
 * Go to deploy tab and connect to GitHub 
 * Find project in BGCG by searching 'project3' and selecting connect 

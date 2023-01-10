@@ -51,7 +51,7 @@ def validate_abo_data():
 
 def check_stock(abo_data, abo_lst):
     """
-    Provide feedback of stock details including units and expiration 
+    Provide feedback of stock details including units and expiration
     of specific blood type as specified by the user input.
     """
     headers = stock_check.row_values(1)

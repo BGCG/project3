@@ -3,6 +3,7 @@
 
 import pprint
 from datetime import datetime, date
+from tabulate import tabulate
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -56,13 +57,14 @@ def check_stock(abo_data, abo_lst):
     Provide feedback of stock details including units and expiration
     of specific blood type as specified by the user input.
     """
-    headers = stock_check.row_values(1)
+    head = stock_check.row_values(1)
     # Build dictonary and provide this in a string output for readability
-    blood_data = [dict(zip(headers, row)) for row in abo_lst if
+    blood_data = [dict(zip(head, row)) for row in abo_lst if
                   abo_data in row]
     print(f'The blood stock for {abo_data} is as follows - ')
-    print(pprint.pformat(str(blood_data).replace("'", "").replace('[', '')
-          .replace(']', '')))
+    # print(pprint.pformat(str(blood_data).replace("'", "").replace('[', '')
+    #       .replace(']', '')))
+    print(tabulate(blood_data, headers="keys"))
 
 
 def stock_low_alert(id_list, abo_data, units):

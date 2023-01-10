@@ -51,7 +51,8 @@ def validate_abo_data():
 
 def check_stock(abo_data, abo_lst):
     """
-    Check stock and provides feedback to user of specific blood type
+    Provide feedback of stock details including units and expiration 
+    of specific blood type as specified by the user input.
     """
     headers = stock_check.row_values(1)
     blood_data = [dict(zip(headers, row)) for row in abo_lst if
@@ -63,7 +64,8 @@ def check_stock(abo_data, abo_lst):
 
 def stock_low_alert(id_list, abo_data, units):
     """
-    Alerts user to whether blood is low of particular type
+    Alerts user to whether blood is low in units of particular type 
+    as specified by user input.
     """
     if any(num < 10 for num in units):
         print(f'You are running low on {abo_data} stock')

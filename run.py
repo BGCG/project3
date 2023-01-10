@@ -98,7 +98,7 @@ def check_expiry(id_list, abo_data, abo_lst):
     # by learnings from the following post -
     # https://stackoverflow.com/questions/36424255/python-iterating-through-a-list-using-datetime-strptime
 
-    exp_lst_formatted = [datetime.strptime(item, "%m-%d-%y").date()
+    exp_lst_formatted = [datetime.strptime(item, "%m-%d-%Y").date()
                          .isocalendar() for item in exp_lst]
 
     if any(exp < todays_date for exp in exp_lst_formatted):

@@ -24,7 +24,6 @@ stock_check_data = stock_check.get_all_values()
 options = ['APOS', 'ANEG', 'BPOS', 'BNEG', 'ABPOS', 'ABNEG', 'OPOS', 'ONEG']
 
 print('Welcome to the BloodTracker app!\n')
-print("TEST!")
 
 
 def validate_abo_data():

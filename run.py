@@ -15,7 +15,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('project3')
 
-stock_check = SHEET.worksheet('stock_check')
+stock_check = SHEET.worksheet('stock')
 
 stock_check_data = stock_check.get_all_values()
 

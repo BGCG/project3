@@ -172,6 +172,8 @@ while True:
                        'Answer y/n: ').strip()
     if user_input == 'y':
         main()
-    else:
+    elif user_input == 'n':
         print('Thank you for using the blood tracker system.')
         break
+    else:
+        print('You entered an invalid input - answer y/n')

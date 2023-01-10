@@ -64,8 +64,8 @@ def check_stock(abo_data, abo_lst):
 
 def stock_low_alert(id_list, abo_data, units):
     """
-    Alerts user to whether blood is low in units of particular type 
-    as specified by user input.
+    Alerts user to whether blood is low in units of particular type
+    as specified by user input and report this to user.
     """
     if any(num < 10 for num in units):
         print(f'You are running low on {abo_data} stock')
@@ -78,7 +78,11 @@ def stock_low_alert(id_list, abo_data, units):
 
 def check_expiry(id_list, abo_data, abo_lst):
     """
-    Checks if certain stock is outwith expiry
+    Checks if stock a particular blood type is outwith expiry
+    and report this to user.
+    Convert dates extracted from google sheets to isocalendar format
+    and also do same conversion for todays date to allow determination
+    of equality or not. 
     """
     todays_date = date.today().isocalendar()
 

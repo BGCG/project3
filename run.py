@@ -27,8 +27,9 @@ print('Welcome to the blood checker app!')
 def validate_abo_data():
     """
     Validate blood type input data to ensure any input is same as options list.
-    Allow white space in user input and covert to uppercase.
-    Print message if user input incorrect.
+    Allow whitespace at from or end of input but not between characters.
+    Alert user if the response does not match options list.
+    Return the correct user input.
     """
     abo_inputted = False
 
@@ -36,8 +37,7 @@ def validate_abo_data():
 
         print('Please enter the ABO blood type followed by Rh status '
               'i.e. APOS, ONEG, ABPOS')
-        abo_input = str(input('Enter the ABO blood type: ')
-                        ).upper().replace(" ", "")
+        abo_input = str(input('Enter the ABO blood type: ')).upper().strip()
 
         if abo_input in options:
             print(f'The blood type you entered was {abo_input}')

@@ -25,7 +25,9 @@ Even though their are other proteins on blood cells that can cause an immune rea
 
 There are departments and health centers dedicated to testing for blood types and in performing transfusions services which are often understaffed in the UK due to spending cuts. This can make keeping up with stocks of blood difficult and no surprising wastage occurs due to expiration of blood. 
 
-This highlights the need for most computerised tracking software to manage the stocks of blood to ensure a smooth running of blood centers and donation services. 
+This highlights the need for most computerised tracking software to manage the stocks of blood to ensure a smooth running of blood centers and donation services.
+
+The BloodTracker app 
 
 ## UX design
 
@@ -35,7 +37,7 @@ Blood donation wastage is a significant problem for transfusion services around 
 
 Blood stored at 6<sup>o</sup>C is consider optimal for 14 days, after which a process called hemolysis generally occurs where blood cells start bursting, making the donation not recommeded for use. One study has indicated that usage of expired blood can result in increased risk of death (Wang et al., 2014). 
 
-BloodTracker is a blood management system which is intended for use in a healthcare system where doctor and nurses can easliy check how many units of blood they have left and which are expiring and need to be discarded. 
+BloodTracker is a blood management system which is intended for use in a healthcare system where doctor and nurses can easliy check how many units of blood they have left and which are expiring and need to be discarded.
 
 ### Current user goals 
 * To check the number of blood donations of a particular blood type is left
@@ -61,34 +63,47 @@ To integrate with input of donations data so the stocks can be adjusted based on
 ## Features
 
 ### Landing page 
+
 * Introduction to app 
 
 ### User input
+
 * User prompted to input what blood type they would like to perform a stock check on
 
-### User feedback 
+### User feedback
+
 * User is alerted to the number of donations left of a particular blood type - blood donations are grouped based on identifiers
 * Additionally, users can see information on units left and expiration dates of blood. 
 
-### Units 
+### Units
+
 * If the units of blood are below 10 units, the user will alerted we are running out of a particular blood type/id
 
-### Expiration 
+### Expiration
+
 * If the expiration of a blood type sample exceeds todays date - the user will be alerted to this and asked to discard the sample 
 * Expiration is only accurate for GMT timezone 
 
 ### Exit or restart
+
 * Once the desired information has been provided to the user, the user will be asked whether they would like to check the stock of another blood type or if they would like to exit the program. 
 
-### Features yet to implement 
+### Features yet to implement
+
 * Stock predictor 
 * Automated donor cohort alert to replenish stocks
 
 ## Testing 
 
-Testing correct user input 
+The main areas of testing where ensuring that the user input was validated effectively. I tested the input by puting in the wrong string or similar strings (ie POS) to the input to determine how robust the validation was, which always activated the invalid response. I wrote a conditional statement that detects whether the user has entered an blood type exactly as stated in the options list. I did want some leaniancy on the users part, such as if there was an accidental space before or after the input word, as this couldn't be misunderstood as a different input for which I used the strip() method. Additionally, it doesn't matter whether the user used upper, lower or captilised input as this would not change the interpretation of the user input. I converted all a user inputs to uppercase using the upper() method. Not converting the user input to uppercase would result the invalid input message showing, as I found when I forgot to include it in the testing process. Furthermore, I didn't allow white space mid word in options, ie 'A B POS' as this might be misinterpretted by the program as BPOS when in fact the user wanted results for ABPOS. 
 
-Testing whether correct values are reported to user 
+With regards to the validate input function, I did have some issues that the rest of the script would still activate even if the invalid response was activated and would not surprisingly report None and empty lists for stock level reports. I therefore fixed my conditional statement in the validate input function so that the while loop would only be exited if the user input was in the options lists, by using of boolean logic. 
+
+An additional area of testing was whether correct values are reported to user. I formed a dictionary to store values in the program and iterated through the dictionary to find whether there were instances that matched the users input and fed this back to the user. I tested by inserted every blood type and double checking the values against the google sheets, for which I did not find any inconsistencies. 
+
+## Bugs 
+
+* To my knowledge, bugs that have been detected have been fixed. I have elaborated on bugs experienced during development of this app in the testing section of this README. 
 
 ## Validators 
 
@@ -102,26 +117,39 @@ Love sandwiches for the intial set up and wire up of the API for which I had no 
 
 I have used list comprehension throughout this project. The following resource from [W3 Schools](https://www.w3schools.com/python/python_lists_comprehension.asp) was a useful reminder on how to perform list comprehensions.
 
-I was a little nervous about using date time in my program as I heard that they are notoriously difficult to work with in programming. A little reading online and usage of the datetime library was helpful. This [stack overflow](https://stackoverflow.com/questions/36424255/python-iterating-through-a-list-using-datetime-strptime) post was partiuclarly helpful in my figuring out how to convert the expiry dates from the google sheets into a more workable format. I converted the date into isocalendar format which forms into a tuple object. This was then used for comparision with todays date, converted into the sample iscalendar format.
+I was a little nervous about using date time in my program as I heard that they are notoriously difficult to work with in programming. A little reading online and usage of the datetime library was helpful. This [stack overflow](https://stackoverflow.com/questions/36424255/python-iterating-through-a-list-using-datetime-strptime) post was partiuclarly helpful in figuring out how to convert the expiry dates from the google sheets into a more workable format. I converted the date into isocalendar format which forms into a tuple object which was then used for comparision with todays date, converted into the sample iscalendar format.
 
-Creation of dictionarys from two lists - i found this resource helpful in me figuring this out. 
+Creation of dictionarys from two lists - I found the reply from Matryn Peters on this [stack overflow](https://stackoverflow.com/questions/72076666/create-a-dictionary-from-multiple-lists-one-list-as-key-other-as-value) post very helpful in me figuring this out. Furthermroe, when providing feedback to the user I wanted to provide the dictionary in a neat tabular format for which I installed the tabulate library. This [resource](https://www.educba.com/python-print-table/) was helpful in figuring out how to use the tabulate module.
 
-### Libraries and frameworks used 
+### Libraries and frameworks used
+
 * GitPod
 * GitHub
 * Heroku 
 
 ### Deployment 
 
-- go through it step-by-step
+* Ensure new lines are inserted in input statements to ensure compatibility with Heroku
+* Create requirements file by entering pip3 freeze > requirements.txt into terminal and commit and push changes 
+* Go to heroku.com and go to dashboard and create new app 
+* New app was named blood-tracker-app
+* Go to settings tab and create config vars - KEY:CREDS VALUE:(all contents of creds.json on gitpod), KEY:PORT VALUE:8000
+* Add buildpacks - heroku/python and heroku/nodejs - in that order
+* Go to deploy tab and connect to GitHub 
+* Find project in BGCG by searching 'project3' and selecting connect 
+* Deploy branch to main in manual deploy
 
-### Dataset  
-* I created a mock dataset that would represent a real world dataset for the purpose of this project. Though I appreciate the mock dataset is a simpflified version of the real-world data which would likely report other information such as different proteins on the blood cells surface and have individual identifiers for each blood type (I grouped these based on blood type and their expiration, but within that group their could be different patients giving that blood).
+
+### Dataset 
+
+* I created a mock dataset that would represent a real world dataset for the purpose of this project. Though I appreciate the mock dataset is a simpflified version of the real world data which would likely report other information such as different proteins on the blood cells surface and have individual identifiers for each blood type (I grouped these based on blood type and their expiration, but within that group their could be different patients giving that blood).
 
 ### People
+
 * My mentor for her valuable feedback.
 
 ## References for information in README introduction  
+
 * Far RM, Rad FS, Abdolazimi Z, Kohan MM. Determination of rate and causes of wastage of blood and blood products in Iranian hospitals. Turk J Haematol. 2014 Jun;31(2):161-7. 
 
 * Wang D, Sun J, Solomon SB, Klein HG, Natanson C. Transfusion of older stored blood and risk of death: a meta-analysis. Transfusion. 2012 Jun;52(6):1184-95. 

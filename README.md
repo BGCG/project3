@@ -66,27 +66,49 @@ To integrate with input of donations data so the stocks can be adjusted based on
 
 * Introduction to app 
 
-### User input
+![introduction](/assets/images/start.jpg)
+
+### User input and validation
 
 * User prompted to input what blood type they would like to perform a stock check on
+* The user input is checked that it is in the correct format.
+
+![input_validation](/assets/images/input_validation.jpg)
 
 ### User feedback
 
 * User is alerted to the number of donations left of a particular blood type - blood donations are grouped based on identifiers
 * Additionally, users can see information on units left and expiration dates of blood. 
 
+![stock_list](/assets/images/stock_list.jpg)
+
 ### Units
 
 * If the units of blood are below 10 units, the user will alerted we are running out of a particular blood type/id
 
+![stock_low](/assets/images/stock_low.jpg)
+
+* If units of blood are above 10 then the user will be informed they have enough stock for future donations. 
+
+![sufficient_stock](/assets/images/sufficient_stock.jpg)
+
 ### Expiration
 
 * If the expiration of a blood type sample exceeds todays date - the user will be alerted to this and asked to discard the sample 
+
+![stock_exp](/assets/images/stock_exp.jpg)
+
+* If all stock of a particular blood type is within expiry, the user will be informed of this.
+
+![within_expiry](/assets/images/within_exp.jpg)
+
 * Expiration is only accurate for GMT timezone 
 
 ### Exit or restart
 
 * Once the desired information has been provided to the user, the user will be asked whether they would like to check the stock of another blood type or if they would like to exit the program. 
+
+![restart_or_quit](/assets/images/restart_or_quit.jpg)
 
 ### Features yet to implement
 
@@ -107,7 +129,9 @@ An additional area of testing was whether correct values are reported to user. I
 
 ## Validators 
 
-* PEP8 (insert screenshot) 
+* Passing the python code for this app through the PEP8 validator produced no errors. 
+
+![PEP8-validator-results](/assets/images/validator_results.jpg)
 
 ## Credits 
 

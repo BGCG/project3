@@ -138,7 +138,7 @@ while True:
     if user_input == 'y':
         main()
     elif user_input == 'n':
-        print('Thank you for using the blood tracker system.\n')
+        print('Thank you for using the BloodTracker app.\n')
         break
     else:
         print('You entered an invalid input - answer y/n\n')

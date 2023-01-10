@@ -1,7 +1,6 @@
 # Wireing up of API and scope declarations helped by following Code institutes
 # Love Sandwiches tutorial
 
-import pprint
 from datetime import datetime, date
 from tabulate import tabulate
 import gspread

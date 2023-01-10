@@ -55,6 +55,7 @@ def check_stock(abo_data, abo_lst):
     of specific blood type as specified by the user input.
     """
     headers = stock_check.row_values(1)
+    # Build dictonary and provide this in a string output for readability
     blood_data = [dict(zip(headers, row)) for row in abo_lst if
                   abo_data in row]
     print(f'The blood stock for {abo_data} is as follows - ')
@@ -65,7 +66,8 @@ def check_stock(abo_data, abo_lst):
 def stock_low_alert(id_list, abo_data, units):
     """
     Alerts user to whether blood is low in units of particular type
-    as specified by user input and report this to user.
+    as specified by user input and report this to user. 
+    Alert which particular blood type stock is low by reporting id.
     """
     if any(num < 10 for num in units):
         print(f'You are running low on {abo_data} stock')
@@ -82,7 +84,8 @@ def check_expiry(id_list, abo_data, abo_lst):
     and report this to user.
     Convert dates extracted from google sheets to isocalendar format
     and also do same conversion for todays date to allow determination
-    of equality or not. 
+    of equality or not.
+    Alter which specific blood type stock is low by reporting id.
     """
     todays_date = date.today().isocalendar()
 
@@ -118,6 +121,8 @@ def main():
 
 main()
 
+
+# Code to allow user to restart stock check if this wish or exit
 
 while True:
     user_input = input('Would you like to check another blood type? '

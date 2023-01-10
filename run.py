@@ -1,8 +1,10 @@
+# Wireing up of API and scope declarations helped by following Code institutes
+# Love Sandwiches tutorial
+
 import pprint
 from datetime import datetime, date
 import gspread
 from google.oauth2.service_account import Credentials
-
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -66,7 +68,7 @@ def check_stock(abo_data, abo_lst):
 def stock_low_alert(id_list, abo_data, units):
     """
     Alerts user to whether blood is low in units of particular type
-    as specified by user input and report this to user. 
+    as specified by user input and report this to user.
     Alert which particular blood type stock is low by reporting id.
     """
     if any(num < 10 for num in units):
@@ -91,6 +93,10 @@ def check_expiry(id_list, abo_data, abo_lst):
 
     exp_lst = [item[2] for item in abo_lst]
 
+    # Conversion of date formats in exp_lst helped
+    # by learnings from the following post -
+    # https://stackoverflow.com/questions/36424255/python-iterating-through-a-list-using-datetime-strptime
+
     exp_lst_formatted = [datetime.strptime(item, "%m-%d-%y").date()
                          .isocalendar() for item in exp_lst]
 
@@ -108,6 +114,7 @@ def check_expiry(id_list, abo_data, abo_lst):
 def main():
     """
     Calls for all functions
+    This function also contains heavily used variables
     """
     abo_value = validate_abo_data()
     values = stock_check_data[1:]

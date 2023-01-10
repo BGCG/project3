@@ -27,7 +27,7 @@ There are departments and health centers dedicated to testing for blood types an
 
 This highlights the need for most computerised tracking software to manage the stocks of blood to ensure a smooth running of blood centers and donation services.
 
-The BloodTracker app 
+The BloodTracker app aims to solve this issue in donation services by providing easy information regarding how many blood units are in store and whether any are expired. The live site can be found [here](https://blood-tracker-app.herokuapp.com/)
 
 ## UX design
 

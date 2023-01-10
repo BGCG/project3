@@ -24,7 +24,7 @@ stock_check_data = stock_check.get_all_values()
 
 options = ['APOS', 'ANEG', 'BPOS', 'BNEG', 'ABPOS', 'ABNEG', 'OPOS', 'ONEG']
 
-print('Welcome to the blood checker app!')
+print('Welcome to the BloodTracker app!\n')
 
 
 def validate_abo_data():
@@ -39,15 +39,15 @@ def validate_abo_data():
     while abo_inputted is False:
 
         print('Please enter the ABO blood type followed by Rh status '
-              'i.e. APOS, ONEG, ABPOS')
+              'i.e. APOS, ONEG, ABPOS\n')
         abo_input = str(input('Enter the ABO blood type: ')).upper().strip()
-
+        
         if abo_input in options:
             print(f'The blood type you entered was {abo_input}')
-            print('Your input was valid')
+            print('Your input was valid \n')
             abo_inputted = True
         else:
-            print('Sorry your input was invalid')
+            print('Sorry your input was invalid\n')
 
     return abo_input
 
@@ -61,10 +61,9 @@ def check_stock(abo_data, abo_lst):
     # Build dictonary and provide this in a string output for readability
     blood_data = [dict(zip(head, row)) for row in abo_lst if
                   abo_data in row]
-    print(f'The blood stock for {abo_data} is as follows - ')
-    # print(pprint.pformat(str(blood_data).replace("'", "").replace('[', '')
-    #       .replace(']', '')))
+    print(f'The blood stock for {abo_data} is as follows: \n')
     print(tabulate(blood_data, headers="keys"))
+    print("\n")
 
 
 def stock_low_alert(id_list, abo_data, units):
@@ -77,9 +76,10 @@ def stock_low_alert(id_list, abo_data, units):
         print(f'You are running low on {abo_data} stock')
         samples_index = [i for i in range(len(units)) if units[i] < 10]
         sample_bloodid = [id_list[i] for i in samples_index]
-        print(f'The following blood id(s) are low in stock - {sample_bloodid}')
+        print('The following blood id(s) are low in stock:'
+              f' {sample_bloodid}\n')
     else:
-        print(f'You have sufficient stock of {abo_data}')
+        print(f'You have sufficient stock of {abo_data}\n')
 
 
 def check_expiry(id_list, abo_data, abo_lst):
@@ -107,8 +107,8 @@ def check_expiry(id_list, abo_data, abo_lst):
         samples_index = [i for i in range(len(exp_lst_formatted))
                          if exp_lst_formatted[i] < todays_date]
         sample_bloodid = [id_list[i] for i in samples_index]
-        print(f'The id(s) of the expired stock is - {sample_bloodid}. '
-              'Please discard this bag.')
+        print(f'The id(s) of the expired stock is: {sample_bloodid}')
+        print('Please discard the blood bag(s) matching this id.\n')
     else:
         print(f'All {abo_data} stock is within expiry date')
 
@@ -135,11 +135,11 @@ main()
 
 while True:
     user_input = input('Would you like to check another blood type? '
-                       'Answer y/n: ').strip()
+                       'Answer y/n: \n').strip()
     if user_input == 'y':
         main()
     elif user_input == 'n':
-        print('Thank you for using the blood tracker system.')
+        print('Thank you for using the blood tracker system.\n')
         break
     else:
-        print('You entered an invalid input - answer y/n')
+        print('You entered an invalid input - answer y/n\n')

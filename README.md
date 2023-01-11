@@ -5,7 +5,7 @@
 Blood cells have proteins on the surface of them called antigens. These include A, B as well as D antigens. The presence of these proteins on the cells determine their blood type - A (contains A antigens), B (contains B antigens), A/B (contains both A and B) and O contains no antigens. Additionally, people can also have a D antigen (also known as Rhesus D protein or Rh for short). This means some people are positive or negative for D/Rh.
  
 Blood types are typically expressed by the A/B/O followed by whether they have the D protein (Positive or Negative) ie APOS. If a patient is transfused with blood from an incompatible blood type ie a person with A blood is transfused with B blood, the patient will have a transfusion reaction due to the recipient patient's immune system attacking the B proteins in the transfused blood.
- 
+
 Patients of different blood types have a different immune repertoire which attacks incompatible blood types in the form of antibodies. This incompatibility is summarised below:
  
 * Patients with A blood have antibodies to B proteins
@@ -17,7 +17,7 @@ Additionally, patients can have the D proteins on their blood cells (POS), while
  
 Even though there are other proteins on blood cells that can cause an immune reaction; A, B and D proteins are considered highly 'clinically relevant' proteins in transfusion reactions (rch.org, 2023).
  
-There are departments and health centers dedicated to testing for blood types and in providing transfusion services, which are often understaffed in the UK due to spending cuts. This can make keeping up with stocks of blood difficult and not surprising wastage occurs due to expiration of blood. This highlights the need for computerised tracking software to manage the stocks of blood to ensure a smooth running of blood centers and donation services. The BloodTracker app aims to solve this issue in donation services by providing easy information regarding how many blood units are in store and whether any are expired.
+There are departments and health centers dedicated to testing for blood types and in providing transfusion services, which are often understaffed in the UK due to spending cuts. This can make keeping up with stocks of blood difficult and not surprisingly wastage occurs due to expiration of blood. This highlights the need for computerised tracking software to manage the stocks of blood to ensure a smooth running of blood centers and donation services. The BloodTracker app aims to solve this issue in donation services by providing easy information regarding how many blood units are in store and whether any are expired.
  
 ![amiresponsive-screenshot](/assets/images/intro_screenshot.jpg)
  
@@ -31,8 +31,8 @@ Blood donation wastage is a significant problem for transfusion services around 
  
 Blood stored at 6<sup>o</sup>C is considered optimal for 35 days (Blood.co.uk, 2023), after which a process called hemolysis generally occurs where blood cells start bursting, making the donation not recommended for use. One study has indicated that usage of expired blood can result in increased risk of death (Wang et al., 2014).
  
-BloodTracker is a blood management system which is intended for use in a healthcare system where doctors and nurses can easily check how many units of blood they have left, as well as which are expiring and need to be discarded.
- 
+BloodTracker is a blood stock management system which is intended for use in a healthcare system where doctors and nurses can easily check how many units of blood they have left, as well as which are expiring and need to be discarded.
+
 ### Current user goals
  
 * To check the number of blood donations of a particular blood type is left
@@ -120,13 +120,13 @@ Chart created using LucidChart premium free trial
  
 ## Limitations
  
-As there are variations in the number of units of blood used in hospitals per week and seasons as well as differences in demands in blood types due to genetic differences between populations, it is difficult to determine how many units of blood of a particular type is classed as a 'low amount'. Therefore, 10K units of blood cap is likely inaccurate. If this project was pursued further I would look at statistical reports to determine which is the best unit cut off point for a particular blood type in a particular population, but to actually predict future blood usage may require machine learning algorithms.
+As there are variations in the number of units of blood used in hospitals per week and seasons as well as differences in demands in blood types due to genetic differences between populations, it is difficult to determine how many units of blood of a particular type is classed as a 'low amount'. Therefore, 10K units of blood as the low limit cut off point is likely inaccurate. If this project was pursued further I would look at statistical reports to determine which is the best unit cut off point for a particular blood type in a particular population, but to actually predict future blood usage may require machine learning algorithms.
  
 ## Testing
  
-The main areas of testing were ensuring that the user input was validated effectively. I tested the input by putting in the wrong string or similar strings (ie POS) to the input to determine how robust the validation was, which always activated the invalid response. I wrote a conditional statement that detects whether the user has entered a blood type exactly as stated in the options list. I did want to allow some leniency on the users part, such as if there was an accidental space before or after the input word, as this couldn't be misunderstood as a different input for which I used the `strip()` method. Additionally, it doesn't matter whether the user used upper, lower or captilised input as this would not change the interpretation of the user input. I converted all the user inputs to uppercase using the `upper()` method. Not converting the user input to uppercase would result in the invalid input message showing, as I found when I forgot to include it in the testing process. Furthermore, I didn't allow white space mid word in options, ie 'A B POS' as this might be misinterpreted by the program as BPOS when in fact the user wanted results for ABPOS.
+The main areas of testing were ensuring that the user input was validated effectively. I tested the input by putting in the wrong string, similar strings (ie POS), blank and other characters ie ! to the input to determine how robust the validation was, which always activated the invalid response message. I wrote a conditional statement that detects whether the user has entered a blood type exactly as stated in the options list. I did want to allow some leniency on the users part, such as if there was an accidental space before or after the input word, as this couldn't be misunderstood as a different input for which I used the `strip()` method. Additionally, it doesn't matter whether the user used upper, lower or captilised input as this would not change the interpretation of the user input. I converted all the user inputs to uppercase using the `upper()` method. Not converting the user input to uppercase would result in the invalid input message showing, as I found when I forgot to include it in the testing process. Furthermore, I didn't allow white space mid word in options, ie 'A B POS' as this might be misinterpreted by the program as BPOS when in fact the user wanted results for ABPOS. In addition to my own testing, my mentor and tutor support also tested the app deployed on Heroku for incorrect input and found that the app did not crash. 
  
-With regards to the validate input function, I did have some issues that the rest of the script would still activate even if the invalid response was activated and would not surprisingly report None and empty lists for stock level reports. I therefore fixed my conditional statement in the validate input function so that the while loop would only be exited if the user input was in the options lists, by using boolean logic.
+With regards to the validate input function, I did have some issues that the rest of the script would still activate even if the invalid response was activated and would not surprisingly report `None` and empty lists for stock level reports. I therefore fixed my conditional statement in the validate input function so that the while loop would only be exited if the user input was in the options lists, by using boolean logic.
  
 An additional area of testing was whether correct values are reported to the user. I formed a dictionary to store values in the program and iterated through the dictionary to find whether there were instances that matched the user's input and fed this back to the user. I tested by inserting every blood type and double checking the values against the google sheets, for which I did not find any inconsistencies.
  
@@ -151,7 +151,13 @@ I have used list comprehension throughout this project. The following resource f
 I was a little nervous about using date time in my program as I heard that they are notoriously difficult to work with in programming. A little reading online and usage of the datetime library was helpful. This [stack overflow](https://stackoverflow.com/questions/36424255/python-iterating-through-a-list-using-datetime-strptime) post was particularly helpful in figuring out how to convert the expiry dates from the google sheets into a more workable format. I converted the expiry dates and today's date into isocalendar format which forms into a tuple object which was then used for comparison between each other. 
  
 Creation of dictionaries from two lists - I found the reply from Martijn Pieters on this [stack overflow](https://stackoverflow.com/questions/72076666/create-a-dictionary-from-multiple-lists-one-list-as-key-other-as-value) post very helpful in me figuring this out. Furthermore, when providing feedback to the user I wanted to provide the dictionary in a neat tabular format for which I installed the tabulate library. This [resource](https://www.educba.com/python-print-table/) was helpful in figuring out how to use the tabulate module.
- 
+
+To remove square brackets when alerting users which blood batch ID was low or expired, I found the reply from Vicent on [stack overflow](https://stackoverflow.com/questions/13207697/how-to-remove-square-brackets-from-list-in-python) who suggested coverting the list to a string and appending `[1:-1]` in the print statement.
+
+### Main language used 
+
+* Python
+
 ### Libraries and frameworks used
  
 * GitPod - the developer platform was used as a space to code my site which was then pushed to Github
@@ -167,10 +173,10 @@ Creation of dictionaries from two lists - I found the reply from Martijn Pieters
 * Create requirements file by entering `pip3 freeze > requirements.txt` into terminal and commit and push changes
 * Go to heroku.com and go to dashboard and create new app
 * New app was named blood-tracker-app
-* Go to settings tab and create config vars - KEY:CREDS VALUE:(all contents of creds.json), KEY:PORT VALUE:8000
-* Add buildpacks - heroku/python and heroku/nodejs - in that order
+* Go to settings tab and create config vars - `KEY:CREDS VALUE:(all contents of creds.json)`, `KEY:PORT VALUE:8000`
+* Add buildpacks - `heroku/python` and `heroku/nodejs` - in that order
 * Go to deploy tab and connect to GitHub
-* Find project in BGCG by searching 'project3' and selecting connect
+* Find project in `BGCG` by searching `project3` and selecting connect
 * Deploy branch to main in manual deploy
  
  
@@ -187,9 +193,11 @@ Creation of dictionaries from two lists - I found the reply from Martijn Pieters
  
 ### People
  
-* My mentor for her valuable feedback.
+* My mentor for her valuable feedback and Code Institute tutor support. 
  
 ## References for information in README introduction  
+
+* Blood cell antigens and blood incompatiblity are common knowledge in the feild of medical biology so no reference is required for those particular facts. 
  
 * Far RM, Rad FS, Abdolazimi Z, Kohan MM. Determination of rate and causes of wastage of blood and blood products in Iranian hospitals. Turk J Haematol. 2014 Jun;31(2):161-7.
  

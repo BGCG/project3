@@ -17,9 +17,7 @@ Additionally, patients can have the D proteins on their blood cells (POS), while
  
 Even though there are other proteins on blood cells that can cause an immune reaction; A, B and D proteins are considered highly 'clinically relevant' proteins in transfusion reactions (rch.org, 2023).
  
-There are departments and health centers dedicated to testing for blood types and in providing transfusion services, which are often understaffed in the UK due to spending cuts. This can make keeping up with stocks of blood difficult and not surprising wastage occurs due to expiration of blood.
- 
-This highlights the need for computerised tracking software to manage the stocks of blood to ensure a smooth running of blood centers and donation services. The BloodTracker app aims to solve this issue in donation services by providing easy information regarding how many blood units are in store and whether any are expired.
+There are departments and health centers dedicated to testing for blood types and in providing transfusion services, which are often understaffed in the UK due to spending cuts. This can make keeping up with stocks of blood difficult and not surprising wastage occurs due to expiration of blood. This highlights the need for computerised tracking software to manage the stocks of blood to ensure a smooth running of blood centers and donation services. The BloodTracker app aims to solve this issue in donation services by providing easy information regarding how many blood units are in store and whether any are expired.
  
 ![amiresponsive-screenshot](/assets/images/intro_screenshot.jpg)
  

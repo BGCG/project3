@@ -58,7 +58,7 @@ def check_stock(abo_data, abo_lst):
     """
     head = stock_check.row_values(1)
     # Build dictonary and provide this in a string output for readability
-    # Creation of dict from two lists was help by learnings from the follow post - 
+    # Creation of dict was helped by learnings from the follow post -
     # https://stackoverflow.com/questions/72076666/create-a-dictionary-from-multiple-lists-one-list-as-key-other-as-value
     blood_data = [dict(zip(head, row)) for row in abo_lst if
                   abo_data in row]

@@ -10,7 +10,7 @@ Patients of different blood types have a different immune repertoire which attac
  
 * Patients with A blood have antibodies to B proteins
 * Patients with B blood have antibodies to A proteins
-* Patients with O blood have antibodies to A and B proteins
+* Patients with O blood have antibodies to both A and B proteins
 * Patients with AB blood have no antibodies to A and B proteins
  
 Additionally, patients can have the D proteins on their blood cells (POS), while patients who are negative for D proteins will have antibodies against the D proteins so cannot be transfused with D+ blood.

@@ -39,7 +39,7 @@ The live site can be found [here](https://blood-tracker-app.herokuapp.com/). Thi
 
 Blood donation wastage is a significant problem for transfusion services around the world. One study has reported that 77.9% of blood was wasted due to time expiry (Far et al., 2013).
 
-Blood stored at 6<sup>o</sup>C is consider optimal for 14 days, after which a process called hemolysis generally occurs where blood cells start bursting, making the donation not recommeded for use. One study has indicated that usage of expired blood can result in increased risk of death (Wang et al., 2014). 
+Blood stored at 6<sup>o</sup>C is consider optimal for 35 days, after which a process called hemolysis generally occurs where blood cells start bursting, making the donation not recommeded for use. One study has indicated that usage of expired blood can result in increased risk of death (Wang et al., 2014). 
 
 BloodTracker is a blood management system which is intended for use in a healthcare system where doctor and nurses can easliy check how many units of blood they have left, as well as which are expiring and need to be discarded.
 

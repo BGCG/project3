@@ -71,9 +71,9 @@ def stock_low_alert(id_list, abo_data, units):
     as specified by user input and report this to user.
     Alert which particular blood type stock is low by reporting id.
     """
-    if any(num < 10 for num in units):
+    if any(num < 10000 for num in units):
         print(f'You are running low on {abo_data} stock')
-        samples_index = [i for i in range(len(units)) if units[i] < 10]
+        samples_index = [i for i in range(len(units)) if units[i] < 10000]
         sample_bloodid = [id_list[i] for i in samples_index]
         print('The following blood id(s) are low in stock:'
               f' {str(sample_bloodid)[1:-1]}\n')

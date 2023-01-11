@@ -27,7 +27,7 @@ The live site can be found [here](https://blood-tracker-app.herokuapp.com/). Thi
  
 ### Site purpose
  
-Blood donation wastage is a significant problem for transfusion services around the world. One study has reported that 77.9% of blood was wasted due to time expiry (Far et al., 2013).
+Blood donation wastage is a significant problem for transfusion services around the world. One study has reported that 77.9% of discarded blood was wasted due to time expiry (Far et al., 2013).
  
 Blood stored at 6<sup>o</sup>C is considered optimal for 35 days (Blood.co.uk, 2023), after which a process called hemolysis generally occurs where blood cells start bursting, making the donation not recommended for use. One study has indicated that usage of expired blood can result in increased risk of death (Wang et al., 2014).
  
@@ -120,8 +120,8 @@ Chart created using LucidChart premium free trial
  
 ## Limitations
  
-As there are variations in the number of units of blood used in hospitals per week and seasons as well as differences in demands in blood types due to genetic differences between populations, it is difficult to determine how many units of blood of a particular type is classed as a 'low amount'. Therefore, 10K units of blood as the low limit cut off point is likely inaccurate. If this project was pursued further I would look at statistical reports to determine which is the best unit cut off point for a particular blood type in a particular population, but to actually predict future blood usage may require machine learning algorithms.
- 
+As there are variations in the number of units of blood used in hospitals per week and times of the year as well as differences in demands in blood types due to genetic differences between populations, it is difficult to determine how many units of blood of a particular type is classed as a 'low amount'. Therefore, 10K units of blood as the low limit cut off point is likely inaccurate. If this project was pursued further I would look at statistical reports to determine which is the best unit cut off point for a particular blood type in a particular population, but to actually predict future blood usage may require machine learning algorithms.
+
 ## Testing
  
 The main areas of testing were ensuring that the user input was validated effectively. I tested the input by putting in the wrong string, similar strings (ie POS), blank and other characters ie ! to the input to determine how robust the validation was, which always activated the invalid response message. I wrote a conditional statement that detects whether the user has entered a blood type exactly as stated in the options list. I did want to allow some leniency on the users part, such as if there was an accidental space before or after the input word, as this couldn't be misunderstood as a different input for which I used the `strip()` method. Additionally, it doesn't matter whether the user used upper, lower or captilised input as this would not change the interpretation of the user input. I converted all the user inputs to uppercase using the `upper()` method. Not converting the user input to uppercase would result in the invalid input message showing, as I found when I forgot to include it in the testing process. Furthermore, I didn't allow white space mid word in options, ie 'A B POS' as this might be misinterpreted by the program as BPOS when in fact the user wanted results for ABPOS. In addition to my own testing, my mentor and tutor support also tested the app deployed on Heroku for incorrect input and found that the app did not crash.

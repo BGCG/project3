@@ -8,9 +8,9 @@ The presence of these proteins on the cells determine their blood type - A (cont
 
 Additionally, people can also have a D antigen (also known a Rhesus D protein or Rh for short). This means some people are positive or negative for D/Rh.
 
-Blood types are typically expressed by the A/B/O followed by whether they express the D proteins (Positive or Negative) ie APOS.
+Blood types are typically expressed by the A/B/O followed by whether they have the D protein (Positive or Negative) ie APOS.
 
-If a patient is transfused with blood from an incompatible blood type ie a A person is transfused with B blood, the patient will have a transfusion reaction due to the patients immune system attached the B proteins in the transfused blood. 
+If a patient is transfused with blood from an incompatible blood type ie a A person is transfused with B blood, the patient will have a transfusion reaction due to the recipient patients immune system attacking the B proteins in the transfused blood. 
 
 Patients of different blood types have a different immune repitore which attacks incomaptible blood types in the form of antibodies. This incomaptibility is summarised below:
 
@@ -23,11 +23,15 @@ Additionally, patients can have the D proteins on their blood cells (POS), while
 
 Even though their are other proteins on blood cells that can cause an immune reaction; A, B and D proteins are considered the most likely to elicit an immune reactions and are often described as the most 'clinically relevant' proteins in transfusion reactions. 
 
-There are departments and health centers dedicated to testing for blood types and in performing transfusions services which are often understaffed in the UK due to spending cuts. This can make keeping up with stocks of blood difficult and no surprising wastage occurs due to expiration of blood. 
+There are departments and health centers dedicated to testing for blood types and in providing transfusions services, which are often understaffed in the UK due to spending cuts. This can make keeping up with stocks of blood difficult and no surprising wastage occurs due to expiration of blood. 
 
-This highlights the need for most computerised tracking software to manage the stocks of blood to ensure a smooth running of blood centers and donation services.
+This highlights the need for computerised tracking software to manage the stocks of blood to ensure a smooth running of blood centers and donation services.
 
-The BloodTracker app aims to solve this issue in donation services by providing easy information regarding how many blood units are in store and whether any are expired. The live site can be found [here](https://blood-tracker-app.herokuapp.com/). This project is still under development and is for the purpose of submission to the Code Institute full stack software deploma.
+The BloodTracker app aims to solve this issue in donation services by providing easy information regarding how many blood units are in store and whether any are expired.
+
+![amiresponsive-screenshot](/assets/images/intro_screenshot.jpg)
+
+The live site can be found [here](https://blood-tracker-app.herokuapp.com/). This project is still under development and was created for the purpose of submission to the Code Institute full stack software deploma program.
 
 ## UX design
 
@@ -37,15 +41,16 @@ Blood donation wastage is a significant problem for transfusion services around 
 
 Blood stored at 6<sup>o</sup>C is consider optimal for 14 days, after which a process called hemolysis generally occurs where blood cells start bursting, making the donation not recommeded for use. One study has indicated that usage of expired blood can result in increased risk of death (Wang et al., 2014). 
 
-BloodTracker is a blood management system which is intended for use in a healthcare system where doctor and nurses can easliy check how many units of blood they have left and which are expiring and need to be discarded.
+BloodTracker is a blood management system which is intended for use in a healthcare system where doctor and nurses can easliy check how many units of blood they have left, as well as which are expiring and need to be discarded.
 
 ### Current user goals 
+
 * To check the number of blood donations of a particular blood type is left
-* To be easily informed which are expired for discarding 
-* To use as a tool to alert donor cohorts to replenish stocks on the basis they are easily told clearly when a blood type is running out 
+* To be easily informed which blood stocks are expired for discarding 
 * To prevent the accidental usage of expired blood
 
 ### Repeated user gaols
+
 * Due to the nature of this app, users will repeat usage of the tool in a manner the same as current user goals would. 
 
 ### Communication
@@ -56,9 +61,17 @@ The user inputs the blood type they would like to check and they are presented w
 
 The site is aimed towards those working in the blood donations and transfusion services such as docotors, nurses and other healthcare workers. 
 
-### Future goals
+### Future goals 
 
 To integrate with input of donations data so the stocks can be adjusted based on donations coming in and also when a donation is used that will be subtracted. A machine learning algorithm could be useful in order to predict the usage of certain blood types so donor cohorts can be automatically invited to come in to donation centres to give blood and replenish stocks. 
+
+## Design 
+
+### Wireframes 
+
+![flowchart](/assets/images/blood-app-flowchart.jpeg)
+
+Chart created using Lucid Chart premium free trial
 
 ## Features
 
@@ -84,7 +97,7 @@ To integrate with input of donations data so the stocks can be adjusted based on
 
 ### Units
 
-* If the units of blood are below 10 units, the user will alerted we are running out of a particular blood type/id
+* If the units of blood are below 10,000 units, the user will alerted we are running out of a particular blood type/id
 
 ![stock_low](/assets/images/stock_low.jpg)
 
@@ -115,9 +128,13 @@ To integrate with input of donations data so the stocks can be adjusted based on
 * Stock predictor 
 * Automated donor cohort alert to replenish stocks
 
+## Limitations
+
+As there are variations in the number of units of blood used in hospitals per week and seasons (i.e. late summer due to increased car crashes) as well as differences in demands in blood types due to genetic differences between populations, it is difficult to determine how many units of blood of a particular type is classed as a 'low amount'. Therefore, 10K units of blood cap is likely unaccurate. If this project was persued further I would look at statistical reports to determine which is the best unit cut of point for a particular blood type, but to actually predict future blood usage may require machine learning algorithms.
+
 ## Testing 
 
-The main areas of testing where ensuring that the user input was validated effectively. I tested the input by puting in the wrong string or similar strings (ie POS) to the input to determine how robust the validation was, which always activated the invalid response. I wrote a conditional statement that detects whether the user has entered an blood type exactly as stated in the options list. I did want some leaniancy on the users part, such as if there was an accidental space before or after the input word, as this couldn't be misunderstood as a different input for which I used the `strip()` method. Additionally, it doesn't matter whether the user used upper, lower or captilised input as this would not change the interpretation of the user input. I converted all a user inputs to uppercase using the `upper()` method. Not converting the user input to uppercase would result the invalid input message showing, as I found when I forgot to include it in the testing process. Furthermore, I didn't allow white space mid word in options, ie 'A B POS' as this might be misinterpretted by the program as BPOS when in fact the user wanted results for ABPOS. 
+The main areas of testing where ensuring that the user input was validated effectively. I tested the input by puting in the wrong string or similar strings (ie POS) to the input to determine how robust the validation was, which always activated the invalid response. I wrote a conditional statement that detects whether the user has entered an blood type exactly as stated in the options list. I did want to allow some leaniancy on the users part, such as if there was an accidental space before or after the input word, as this couldn't be misunderstood as a different input for which I used the `strip()` method. Additionally, it doesn't matter whether the user used upper, lower or captilised input as this would not change the interpretation of the user input. I converted all a user inputs to uppercase using the `upper()` method. Not converting the user input to uppercase would result the invalid input message showing, as I found when I forgot to include it in the testing process. Furthermore, I didn't allow white space mid word in options, ie 'A B POS' as this might be misinterpretted by the program as BPOS when in fact the user wanted results for ABPOS. 
 
 With regards to the validate input function, I did have some issues that the rest of the script would still activate even if the invalid response was activated and would not surprisingly report None and empty lists for stock level reports. I therefore fixed my conditional statement in the validate input function so that the while loop would only be exited if the user input was in the options lists, by using of boolean logic. 
 
@@ -150,6 +167,8 @@ Creation of dictionarys from two lists - I found the reply from Matryn Peters on
 * GitPod - the developer platform was used as a space to code my site which was then pushed to Github
 * GitHub - to store the app prior to connecting Heroku
 * Heroku - for deployment to live terminal
+* Lucid Chart - for wireframing, which an image of the wireframe created in Lucid Chart is provided in the Design section of this README
+* AmIResponsive - for the screenshot of how the app will look across different devices, which is included in the introductio to this README
 
 ### Deployment 
 

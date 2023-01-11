@@ -77,7 +77,7 @@ def stock_low_alert(id_list, abo_data, units):
         print(f'You are running low on {abo_data} stock')
         samples_index = [i for i in range(len(units)) if units[i] < 10000]
         sample_bloodid = [id_list[i] for i in samples_index]
-        print('The following blood id(s) are low in stock:'
+        print('The following blood ID(s) are low in stock:'
               f' {str(sample_bloodid)[1:-1]}\n')
     else:
         print(f'You have sufficient stock of {abo_data}\n')
@@ -108,9 +108,9 @@ def check_expiry(id_list, abo_data, abo_lst):
         samples_index = [i for i in range(len(exp_lst_formatted))
                          if exp_lst_formatted[i] < todays_date]
         sample_bloodid = [id_list[i] for i in samples_index]
-        print('The id(s) of the expired stock is:'
+        print('The ID(s) of the expired stock is:'
               f' {str(sample_bloodid)[1:-1]}')
-        print('Please discard the blood bag(s) matching this id.\n')
+        print('Please discard the blood bag(s) matching this ID.\n')
     else:
         print(f'All {abo_data} stock is within expiry date')
 

@@ -107,7 +107,7 @@ Chart created using LucidChart premium free trial
  
 ![within_expiry](/assets/images/within_exp.jpg)
  
-* Expiration is only accurate for GMT timezone
+* Expiration checker is only accurate for GMT timezone
  
 ### Exit or restart
  
@@ -122,7 +122,7 @@ Chart created using LucidChart premium free trial
  
 ## Limitations
  
-As there are variations in the number of units of blood used in hospitals per week and seasons (i.e. there is increased transfusions in late summer due to increased car crashes) as well as differences in demands in blood types due to genetic differences between populations, it is difficult to determine how many units of blood of a particular type is classed as a 'low amount'. Therefore, 10K units of blood cap is likely inaccurate. If this project was pursued further I would look at statistical reports to determine which is the best unit cut off point for a particular blood type in a particular population, but to actually predict future blood usage may require machine learning algorithms.
+As there are variations in the number of units of blood used in hospitals per week and seasons as well as differences in demands in blood types due to genetic differences between populations, it is difficult to determine how many units of blood of a particular type is classed as a 'low amount'. Therefore, 10K units of blood cap is likely inaccurate. If this project was pursued further I would look at statistical reports to determine which is the best unit cut off point for a particular blood type in a particular population, but to actually predict future blood usage may require machine learning algorithms.
  
 ## Testing
  

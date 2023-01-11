@@ -2,7 +2,7 @@
  
 ## Background
  
-Blood cells have proteins on the surface of them called antigens. These include A, B as well as D antigens. The presence of these proteins on the cells determine their blood type - A (contains A antigens), B (contains B antigens), A/B (contains both A and B) and O contains no antigens. Additionally, people can also have a D antigen (also known as Rhesus D protein or Rh for short). This means some people are positive or negative for D/Rh.
+Blood cells have proteins on the surface of them called antigens. These include A, B as well as D antigens. The presence of these proteins on the cells determine their blood type - A (contains A antigens), B (contains B antigens), A/B (contains both A and B) and (O contains no antigens). Additionally, people can also have a D antigen (also known as Rhesus D protein or Rh for short). This means some people are positive or negative for D/Rh.
  
 Blood types are typically expressed by the A/B/O followed by whether they have the D protein (Positive or Negative) ie APOS. If a patient is transfused with blood from an incompatible blood type ie a person with A blood is transfused with B blood, the patient will have a transfusion reaction due to the recipient patient's immune system attacking the B proteins in the transfused blood.
 
@@ -124,7 +124,7 @@ As there are variations in the number of units of blood used in hospitals per we
  
 ## Testing
  
-The main areas of testing were ensuring that the user input was validated effectively. I tested the input by putting in the wrong string, similar strings (ie POS), blank and other characters ie ! to the input to determine how robust the validation was, which always activated the invalid response message. I wrote a conditional statement that detects whether the user has entered a blood type exactly as stated in the options list. I did want to allow some leniency on the users part, such as if there was an accidental space before or after the input word, as this couldn't be misunderstood as a different input for which I used the `strip()` method. Additionally, it doesn't matter whether the user used upper, lower or captilised input as this would not change the interpretation of the user input. I converted all the user inputs to uppercase using the `upper()` method. Not converting the user input to uppercase would result in the invalid input message showing, as I found when I forgot to include it in the testing process. Furthermore, I didn't allow white space mid word in options, ie 'A B POS' as this might be misinterpreted by the program as BPOS when in fact the user wanted results for ABPOS. In addition to my own testing, my mentor and tutor support also tested the app deployed on Heroku for incorrect input and found that the app did not crash. 
+The main areas of testing were ensuring that the user input was validated effectively. I tested the input by putting in the wrong string, similar strings (ie POS), blank and other characters ie ! to the input to determine how robust the validation was, which always activated the invalid response message. I wrote a conditional statement that detects whether the user has entered a blood type exactly as stated in the options list. I did want to allow some leniency on the users part, such as if there was an accidental space before or after the input word, as this couldn't be misunderstood as a different input for which I used the `strip()` method. Additionally, it doesn't matter whether the user used upper, lower or captilised input as this would not change the interpretation of the user input. I converted all the user inputs to uppercase using the `upper()` method. Not converting the user input to uppercase would result in the invalid input message showing, as I found when I forgot to include it in the testing process. Furthermore, I didn't allow white space mid word in options, ie 'A B POS' as this might be misinterpreted by the program as BPOS when in fact the user wanted results for ABPOS. In addition to my own testing, my mentor and tutor support also tested the app deployed on Heroku for incorrect input and found that the app did not crash.
  
 With regards to the validate input function, I did have some issues that the rest of the script would still activate even if the invalid response was activated and would not surprisingly report `None` and empty lists for stock level reports. I therefore fixed my conditional statement in the validate input function so that the while loop would only be exited if the user input was in the options lists, by using boolean logic.
  
@@ -152,7 +152,7 @@ I was a little nervous about using date time in my program as I heard that they 
  
 Creation of dictionaries from two lists - I found the reply from Martijn Pieters on this [stack overflow](https://stackoverflow.com/questions/72076666/create-a-dictionary-from-multiple-lists-one-list-as-key-other-as-value) post very helpful in me figuring this out. Furthermore, when providing feedback to the user I wanted to provide the dictionary in a neat tabular format for which I installed the tabulate library. This [resource](https://www.educba.com/python-print-table/) was helpful in figuring out how to use the tabulate module.
 
-To remove square brackets when alerting users which blood batch ID was low or expired, I found the reply from Vicent on [stack overflow](https://stackoverflow.com/questions/13207697/how-to-remove-square-brackets-from-list-in-python) who suggested coverting the list to a string and appending `[1:-1]` in the print statement.
+To remove square brackets when alerting users which blood batch ID was low or expired, I found the reply from Vicent on [stack overflow](https://stackoverflow.com/questions/13207697/how-to-remove-square-brackets-from-list-in-python) who suggested coverting the list to a string followed by `[1:-1]` in the print statement.
 
 ### Main language used 
 
@@ -177,7 +177,7 @@ To remove square brackets when alerting users which blood batch ID was low or ex
 * Add buildpacks - `heroku/python` and `heroku/nodejs` - in that order
 * Go to deploy tab and connect to GitHub
 * Find project in `BGCG` by searching `project3` and selecting connect
-* Deploy branch to main in manual deploy
+* Deploy branch to main by manual deploy
  
  
 ### Dataset
@@ -189,7 +189,7 @@ To remove square brackets when alerting users which blood batch ID was low or ex
 * Blood type: blood type of batch expressed as ABO type followed by Rh status ie APOS.
 * Units: number of units of blood within that batch. 
 * Expiration: expiration date of blood batch. The idea being that the whole batch was collected by different patients on a particular day and then 35 days from there is the expiry.
-* Blood batch ID: the id of that full blood batch (different numbers assigned based on when the blood was collected of a particular type).
+* Blood batch ID: the ID of that full blood batch (different numbers assigned based on when the blood was collected of a particular type).
  
 ### People
  

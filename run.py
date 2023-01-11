@@ -139,6 +139,7 @@ while True:
     if user_input == 'y':
         main()
     elif user_input == 'n':
+        print("\n")
         print('Thank you for using the BloodTracker app.\n')
         break
     else:

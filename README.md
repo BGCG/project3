@@ -15,7 +15,7 @@ Patients of different blood types have a different immune repertoire which attac
  
 Additionally, patients can have the D proteins on their blood cells (POS), while patients who are negative for D proteins will have antibodies against the D proteins so cannot be transfused with D+ blood.
  
-Even though there are other proteins on blood cells that can cause an immune reaction; A, B and D proteins are considered the most likely to elicit an immune reaction and are often described as the most 'clinically relevant' proteins in transfusion reactions.
+Even though there are other proteins on blood cells that can cause an immune reaction; A, B and D proteins are considered highly 'clinically relevant' proteins in transfusion reactions.
  
 There are departments and health centers dedicated to testing for blood types and in providing transfusion services, which are often understaffed in the UK due to spending cuts. This can make keeping up with stocks of blood difficult and not surprising wastage occurs due to expiration of blood.
  

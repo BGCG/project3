@@ -15,7 +15,7 @@ Patients of different blood types have a different immune repertoire which attac
  
 Additionally, patients can have the D proteins on their blood cells (POS), while patients who are negative for D proteins will have antibodies against the D proteins so cannot be transfused with D+ blood.
  
-Even though there are other proteins on blood cells that can cause an immune reaction; A, B and D proteins are considered highly 'clinically relevant' proteins in transfusion reactions.
+Even though there are other proteins on blood cells that can cause an immune reaction; A, B and D proteins are considered highly 'clinically relevant' proteins in transfusion reactions (rch.org, 2023).
  
 There are departments and health centers dedicated to testing for blood types and in providing transfusion services, which are often understaffed in the UK due to spending cuts. This can make keeping up with stocks of blood difficult and not surprising wastage occurs due to expiration of blood.
  
@@ -31,7 +31,7 @@ The live site can be found [here](https://blood-tracker-app.herokuapp.com/). Thi
  
 Blood donation wastage is a significant problem for transfusion services around the world. One study has reported that 77.9% of blood was wasted due to time expiry (Far et al., 2013).
  
-Blood stored at 6<sup>o</sup>C is considered optimal for 35 days, after which a process called hemolysis generally occurs where blood cells start bursting, making the donation not recommended for use. One study has indicated that usage of expired blood can result in increased risk of death (Wang et al., 2014).
+Blood stored at 6<sup>o</sup>C is considered optimal for 35 days (Blood.co.uk, 2023), after which a process called hemolysis generally occurs where blood cells start bursting, making the donation not recommended for use. One study has indicated that usage of expired blood can result in increased risk of death (Wang et al., 2014).
  
 BloodTracker is a blood management system which is intended for use in a healthcare system where doctors and nurses can easily check how many units of blood they have left, as well as which are expiring and need to be discarded.
  
@@ -55,7 +55,7 @@ The site is aimed towards those working in the blood donations and transfusion s
  
 ### Future goals
  
-To integrate with input of donations data so the stocks can be adjusted based on donations coming in and also when a donation is used that will be subtracted. A machine learning algorithm could be useful in order to predict the usage of certain blood types so donor cohorts can be automatically invited to come into donation centers to give blood and replenish stocks.
+To integrate with input of donations data so the stocks can be adjusted based on donations coming in and also when a donation is used that will be subtracted. A machine learning algorithm could be useful in order to predict the usage of certain blood types so donor cohorts can be automatically invited to come into donation centers to give blood and replenish stocks. Additionally, to modify the database to include all the clinically relevant blood cell antigens ie Kell, Duffy and Kidd system antigens.
  
 ## Design
  
@@ -161,6 +161,7 @@ Creation of dictionaries from two lists - I found the reply from Martijn Pieters
 * Heroku - for deployment to live terminal
 * LucidChart - for wireframing, which an image of the wireframe created in LucidChart is provided in the Design section of this README
 * AmIResponsive - for the screenshot of how the app will look across different devices, which is included in the introduction to this README
+* citethisforme.com - to generate website references
  
 ### Deployment
  
@@ -195,7 +196,10 @@ Creation of dictionaries from two lists - I found the reply from Martijn Pieters
 * Far RM, Rad FS, Abdolazimi Z, Kohan MM. Determination of rate and causes of wastage of blood and blood products in Iranian hospitals. Turk J Haematol. 2014 Jun;31(2):161-7.
  
 * Wang D, Sun J, Solomon SB, Klein HG, Natanson C. Transfusion of older stored blood and risk of death: a meta-analysis. Transfusion. 2012 Jun;52(6):1184-95.
- 
+
+* How your donation gets to the patient. NHS Blood Donation. Available at: https://www.blood.co.uk/news-and-campaigns/the-donor-magazine-autumn-2017/how-your-donation-gets-to-the-patient/#:~:text=All%20test%20results%20are%20recorded,kept%20for%20only%20five%20days (Accessed: January 11, 2023). 
+
+* The Royal Children's Hospital Melbourne. Available at: https://www.rch.org.au/bloodtrans/about_blood_products/Blood_Groups_and_Compatibilities/ (Accessed: January 11, 2023). 
  
  
 

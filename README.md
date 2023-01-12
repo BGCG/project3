@@ -166,6 +166,13 @@ To remove square brackets when alerting users which blood batch ID was low or ex
 * LucidChart - for wireframing, which an image of the wireframe created in LucidChart is provided in the Design section of this README
 * AmIResponsive - for the screenshot of how the app will look across different devices, which is included in the introduction to this README
 * citethisforme.com - to generate website references
+
+#### Python libraries
+
+* gspread - for working with google sheets in this Python project
+* datetime - to easily manipulate the date and time object 
+* google-auth - to provide authentification to the API 
+* tabulate - to easily produce neat tables for user feedback
  
 ### Deployment
  
@@ -173,7 +180,7 @@ To remove square brackets when alerting users which blood batch ID was low or ex
 * Create requirements file by entering `pip3 freeze > requirements.txt` into terminal and commit and push changes
 * Go to heroku.com and go to dashboard and create new app
 * New app was named blood-tracker-app
-* Go to settings tab and create config vars - `KEY:CREDS VALUE:(all contents of creds.json)`, `KEY:PORT VALUE:8000`
+* Go to settings tab and create config vars - `KEY:CREDS VALUE:` (all contents of creds.json), `KEY:PORT VALUE:8000`
 * Add buildpacks - `heroku/python` and `heroku/nodejs` - in that order
 * Go to deploy tab and connect to GitHub
 * Find project in `BGCG` by searching `project3` and selecting connect
@@ -197,7 +204,7 @@ To remove square brackets when alerting users which blood batch ID was low or ex
  
 ## References for information in README introduction  
 
-* Blood cell antigens and blood incompatiblity are common knowledge in the feild of medical biology so no reference is required for those particular facts. 
+Blood cell antigens and blood incompatiblity are common knowledge in the feild of medical biology so no reference is required for those particular facts. 
  
 * Far RM, Rad FS, Abdolazimi Z, Kohan MM. Determination of rate and causes of wastage of blood and blood products in Iranian hospitals. Turk J Haematol. 2014 Jun;31(2):161-7.
  

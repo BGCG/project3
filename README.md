@@ -2,7 +2,7 @@
  
 ## Background
  
-Blood cells have proteins on the surface of them called antigens. These include A, B as well as D antigens. The presence of these proteins on the cells determine their blood type - A (contains A antigens), B (contains B antigens), A/B (contains both A and B) and (O contains no antigens). Additionally, people can also have a D antigen (also known as Rhesus D protein or Rh for short). This means some people are positive or negative for D/Rh.
+Blood cells have proteins on the surface of them called antigens. These include A, B as well as D antigens. The presence of these proteins on the cells determine their blood type - A (contains A antigens), B (contains B antigens), A/B (contains both A and B) and (O contains no A or B antigens). Additionally, people can also have a D antigen (also known as Rhesus D protein or Rh for short). This means some people are positive or negative for D/Rh.
  
 Blood types are typically expressed by the A/B/O followed by whether they have the D protein (Positive or Negative) ie APOS. If a patient is transfused with blood from an incompatible blood type ie a person with A blood is transfused with B blood, the patient will have a transfusion reaction due to the recipient patient's immune system attacking the B proteins in the transfused blood.
 
@@ -91,7 +91,7 @@ Chart created using LucidChart premium free trial
  
 ![stock_low](/assets/images/stock_low.jpg)
  
-* If units of blood are above 10 then the user will be informed they have enough stock for future donations.
+* If units of blood are above 10,000 then the user will be informed they have enough stock for future tranfusions.
  
 ![sufficient_stock](/assets/images/sufficient_stock.jpg)
  
@@ -160,19 +160,19 @@ To remove square brackets when alerting users which blood batch ID was low or ex
 
 ### Libraries and frameworks used
  
-* GitPod - the developer platform was used as a space to code my site which was then pushed to Github
+* GitPod - the developer platform was used as a space to code the app which was then pushed to Github
 * GitHub - to store the app prior to connecting Heroku
-* Heroku - for deployment to live terminal
-* LucidChart - for wireframing, which an image of the wireframe created in LucidChart is provided in the Design section of this README
-* AmIResponsive - for the screenshot of how the app will look across different devices, which is included in the introduction to this README
-* citethisforme.com - to generate website references
+* [Heroku](https://www.heroku.com) - for deployment to live terminal
+* [LucidChart](https://www.lucidchart.com/) - for wireframing, which an image of the wireframe created in LucidChart is provided in the Design section of this README
+* [AmIResponsive](https://ui.dev/amiresponsive) - for the screenshot of how the app will look across different devices, which is included in the introduction to this README
+* [citethisforme.com](citethisforme.com) - to generate website references
 
 #### Python libraries
 
 * gspread - for working with google sheets in this Python project
 * datetime - to easily manipulate the date and time object 
 * google-auth - to provide authentification to the API 
-* tabulate - to easily produce neat tables for user feedback
+* tabulate - to easily produce neat tables for user feedback 
  
 ### Deployment
  

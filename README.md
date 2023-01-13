@@ -2,7 +2,7 @@
  
 ## Background
  
-Blood cells have proteins on the surface of them called antigens. These include A, B as well as D antigens. The presence of these proteins on the cells determine their blood type - A (contains A antigens), B (contains B antigens), A/B (contains both A and B) and (O contains no A or B antigens). Additionally, people can also have a D antigen (also known as Rhesus D protein or Rh for short). This means some people are positive or negative for D/Rh.
+Blood cells have proteins on the surface of them called antigens. These include A, B as well as D antigens. The presence of these proteins on the cells determine their blood type - A (contains A antigens), B (contains B antigens), AB (contains both A and B) and (O contains no A or B antigens). Additionally, people can also have a D antigen (also known as Rhesus D protein or Rh for short). This means some people are positive or negative for D/Rh.
  
 Blood types are typically expressed by the A/B/O followed by whether they have the D protein (Positive or Negative) i.e. APOS. If a patient is transfused with blood from an incompatible blood type, i.e. a person with A blood is transfused with B blood, the patient will have a transfusion reaction due to the recipient patient's immune system attacking the B proteins in the transfused blood.
  

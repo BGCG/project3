@@ -53,7 +53,7 @@ The site is aimed towards those working in the blood donations and transfusion s
  
 ### Future goals
  
-To integrate with input of donations data so the stocks can be adjusted based on donations coming in and also when a donation is used that will be subtracted. A machine learning algorithm could be useful in order to predict the usage of certain blood types so donor cohorts can be automatically invited to come into donation centers to give blood and replenish stocks. Additionally, to modify the database to include all the clinically relevant blood cell antigens i.e. Kell, Duffy and Kidd system antigens.
+To integrate with input of donations data so the stocks can be adjusted based on donations coming in and also when a donation is used that will be subtracted. A machine learning algorithm could be useful in order to predict the usage of certain blood types so donor cohorts can be automatically invited to come into donation centres to give blood and replenish stocks. Additionally, to modify the database to include all the clinically relevant blood cell antigens i.e. Kell, Duffy and Kidd system antigens.
  
 ## Design
  
@@ -84,7 +84,7 @@ Chart created using LucidChart premium free trial
  
 ### User feedback
  
-* User is alerted to the number of donations left of a particular blood type - blood donations are grouped based on identifiers
+* User is alerted to the number of donations left of a particular blood type - blood donations are grouped based on identifiers.
 * Additionally, users can see information on units left and expiration dates of blood.
  
 ![stock_list](/assets/images/stock_list.jpg)
@@ -116,7 +116,7 @@ Chart created using LucidChart premium free trial
 * Once the desired information has been provided to the user, the user will be asked whether they would like to check the stock of another blood type or if they would like to exit the program.
  
 ![restart_or_quit](/assets/images/restart_or_quit.jpg)
- 
+
 ### Features yet to implement
  
 * Stock predictor

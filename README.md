@@ -29,7 +29,7 @@ The live site can be found [here](https://blood-tracker-app.herokuapp.com/). Thi
  
 Blood donation wastage is a significant problem for transfusion services around the world. One study has reported that 77.9% of discarded blood was wasted due to time expiry (Far et al., 2013).
  
-Blood stored at 6<sup>o</sup>C is considered optimal for 35 days (Blood.co.uk, 2023), after which a process called hemolysis generally occurs where blood cells start bursting, making the donation not recommended for use. One study has indicated that usage of expired blood can result in increased risk of death (Wang et al., 2014).
+Blood stored at 6<sup>o</sup>C is considered optimal for 35 days (Blood.co.uk, 2023). When blood is in storage, it goes through a serious of biological changes called storage lesion, making the donation progressly less effective in transfusion (Oyet et al., 2018). One study has indicated that usage of expired blood can result in increased risk of death (Wang et al., 2014).
  
 BloodTracker is a blood stock management system which is intended for use in a healthcare system where doctors and nurses can easily check how many units of blood they have left, as well as which are expiring and need to be discarded.
 
@@ -128,7 +128,7 @@ The main areas of testing were ensuring that the user input was validated effect
  
 With regards to the validate input function, I did have some issues that the rest of the script would still activate even if the invalid response was activated and would not surprisingly report `None` and empty lists for stock level reports. I therefore fixed my conditional statement in the validate input function so that the while loop would only be exited if the user input was in the options lists, by using boolean logic.
  
-An additional area of testing was whether correct values are reported to the user. I formed a dictionary to store values in the program and iterated through the dictionary to find whether there were instances that matched the user's input and fed this back to the user. I tested by inserting every blood type and double checking the values against the google sheets, for which I did not find any inconsistencies.
+An additional area of testing was whether correct values are reported to the user. For the stock list report, I formed a dictionary to store values in the program and iterated through the dictionary to find whether there were instances that matched the user's input and fed this back to the user. I tested by inserting every blood type and double checking the values against the google sheets, for which I did not find any inconsistencies.
  
 ## Bugs
  
@@ -178,8 +178,8 @@ To remove square brackets when alerting users which blood batch ID was low or ex
  
 * Ensure new lines are inserted in input statements to ensure compatibility with Heroku
 * Create requirements file by entering `pip3 freeze > requirements.txt` into terminal and commit and push changes
-* Go to heroku.com and go to dashboard and create new app
-* New app was named blood-tracker-app
+* Go to heroku.com and go to dashboard and `create new app`
+* New app was named `blood-tracker-app`
 * Go to settings tab and create config vars - `KEY:CREDS VALUE:` (all contents of creds.json), `KEY:PORT VALUE:8000`
 * Add buildpacks - `heroku/python` and `heroku/nodejs` - in that order
 * Go to deploy tab and connect to GitHub
@@ -204,15 +204,20 @@ To remove square brackets when alerting users which blood batch ID was low or ex
  
 ## References for information in README introduction  
 
-Blood cell antigens and blood incompatiblity are common knowledge in the feild of medical biology so no reference is required for those particular facts. 
+Blood cell antigens and blood incompatiblity are common knowledge in the feild of medical biology so no reference is required for those particular facts.
+
+### References for specific studies and informaton in websites:
  
 * Far RM, Rad FS, Abdolazimi Z, Kohan MM. Determination of rate and causes of wastage of blood and blood products in Iranian hospitals. Turk J Haematol. 2014 Jun;31(2):161-7.
- 
-* Wang D, Sun J, Solomon SB, Klein HG, Natanson C. Transfusion of older stored blood and risk of death: a meta-analysis. Transfusion. 2012 Jun;52(6):1184-95.
 
 * How your donation gets to the patient. NHS Blood Donation. Available at: https://www.blood.co.uk/news-and-campaigns/the-donor-magazine-autumn-2017/how-your-donation-gets-to-the-patient/#:~:text=All%20test%20results%20are%20recorded,kept%20for%20only%20five%20days (Accessed: January 11, 2023). 
 
+* Oyet C, Okongo B, Onyuthi RA, Muwanguzi E. Biochemical changes in stored donor units: implications on the efficacy of blood transfusion. J Blood Med. 2018 Jun 25;9:111-115.
+
 * The Royal Children's Hospital Melbourne. Available at: https://www.rch.org.au/bloodtrans/about_blood_products/Blood_Groups_and_Compatibilities/ (Accessed: January 11, 2023). 
  
+* Wang D, Sun J, Solomon SB, Klein HG, Natanson C. Transfusion of older stored blood and risk of death: a meta-analysis. Transfusion. 2012 Jun;52(6):1184-95.
+
+
  
 

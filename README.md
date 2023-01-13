@@ -21,7 +21,7 @@ There are departments and health centers dedicated to testing for blood types an
  
 ![amiresponsive-screenshot](/assets/images/intro_screenshot.jpg)
  
-The live site can be found [here](https://blood-tracker-app.herokuapp.com/). This project was created for the purpose of submission to the Code Institute full stack software diploma program.
+The live site can be found [here](https://blood-tracker-app.herokuapp.com/). This project was created for the purpose of submission to the Code Institute full stack software development diploma program.
  
 ## UX design
  
@@ -77,6 +77,10 @@ Chart created using LucidChart premium free trial
 * The user input is checked that it is in the correct format.
  
 ![input_validation](/assets/images/input_validation.jpg)
+
+* If the input is invalid, the user will be alerted of this. 
+
+![invalid_input](/assets/images/invalid_input.jpg)
  
 ### User feedback
  

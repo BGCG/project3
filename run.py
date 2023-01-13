@@ -112,7 +112,7 @@ def check_expiry(id_list, abo_data, abo_lst):
               f' {str(sample_bloodid)[1:-1]}')
         print('Please discard the blood bag(s) matching this ID.\n')
     else:
-        print(f'All {abo_data} stock is within expiry date')
+        print(f'All {abo_data} stock is within expiry date.\n')
 
 
 def main():

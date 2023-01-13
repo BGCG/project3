@@ -4,7 +4,7 @@
  
 Blood cells have proteins on the surface of them called antigens. These include A, B as well as D antigens. The presence of these proteins on the cells determine their blood type - A (contains A antigens), B (contains B antigens), A/B (contains both A and B) and (O contains no A or B antigens). Additionally, people can also have a D antigen (also known as Rhesus D protein or Rh for short). This means some people are positive or negative for D/Rh.
  
-Blood types are typically expressed by the A/B/O followed by whether they have the D protein (Positive or Negative) ie APOS. If a patient is transfused with blood from an incompatible blood type, i.e. a person with A blood is transfused with B blood, the patient will have a transfusion reaction due to the recipient patient's immune system attacking the B proteins in the transfused blood.
+Blood types are typically expressed by the A/B/O followed by whether they have the D protein (Positive or Negative) i.e. APOS. If a patient is transfused with blood from an incompatible blood type, i.e. a person with A blood is transfused with B blood, the patient will have a transfusion reaction due to the recipient patient's immune system attacking the B proteins in the transfused blood.
  
 Patients of different blood types have a different immune repertoire which attacks incompatible blood types in the form of antibodies. This incompatibility is summarised below:
  
@@ -29,7 +29,7 @@ The live site can be found [here](https://blood-tracker-app.herokuapp.com/). Thi
  
 Blood donation wastage is a significant problem for transfusion services around the world. One study has reported that 77.9% of discarded blood was wasted due to time expiry (Far et al., 2013).
  
-Blood stored at 6<sup>o</sup>C is considered optimal for 35 days (Blood.co.uk, 2023). When blood is in storage, it goes through a serious of biological changes called storage lesion, making the donation progressively less effective in transfusion (Oyet et al., 2018). One study has indicated that usage of expired blood can result in increased risk of death (Wang et al., 2014).
+Blood stored at 6<sup>o</sup>C is considered optimal for 35 days (Blood.co.uk, 2023). When blood is in storage, it goes through a series of biological changes called storage lesion, making the donation progressively less effective in transfusion (Oyet et al., 2018). One study has indicated that usage of expired blood can result in increased risk of death (Wang et al., 2014).
  
 BloodTracker is a blood stock management system which is intended for use in a healthcare system where doctors and nurses can easily check how many units of blood they have left, as well as which are expiring and need to be discarded.
  
@@ -124,7 +124,7 @@ As there are variations in the number of units of blood used in hospitals per we
  
 ## Testing
  
-The main areas of testing were ensuring that the user input was validated effectively. I tested the input by putting in the wrong string, similar strings (ie `POS`), blank and other characters ie `!` to the input to determine how robust the validation was, which always activated the invalid response message. I wrote a conditional statement that detects whether the user has entered a blood type exactly as stated in the options list. I did want to allow some leniency on the users part, such as if there was an accidental space before or after the input word, as this couldn't be misunderstood as a different input for which I used the `strip()` method. Additionally, it doesn't matter whether the user used upper, lower or captilised input as this would not change the interpretation of the user input. I converted all the user inputs to uppercase using the `upper()` method. Not converting the user input to uppercase would result in the invalid input message showing, as I found when I forgot to include it in the testing process. Furthermore, I didn't allow white space mid word in options, i.e. `A B POS` as this might be misinterpreted by the program as BPOS when in fact the user wanted results for ABPOS. In addition to my own testing, my mentor and tutor support also tested the app deployed on Heroku for incorrect input and found that the app did not crash.
+The main areas of testing were ensuring that the user input was validated effectively. I tested the input by putting in the wrong string, similar strings (i.e. `POS`), blank and other characters i.e. `!` to the input to determine how robust the validation was, which always activated the invalid response message. I wrote a conditional statement that detects whether the user has entered a blood type exactly as stated in the options list. I did want to allow some leniency on the users part, such as if there was an accidental space before or after the input word, as this couldn't be misunderstood as a different input for which I used the `strip()` method. Additionally, it doesn't matter whether the user used upper, lower or captilised input as this would not change the interpretation of the user input. I converted all the user inputs to uppercase using the `upper()` method. Not converting the user input to uppercase would result in the invalid input message showing, as I found when I forgot to include it in the testing process. Furthermore, I didn't allow white space mid word in options, i.e. `A B POS` as this might be misinterpreted by the program as BPOS when in fact the user wanted results for ABPOS. In addition to my own testing, my mentor and tutor support also tested the app deployed on Heroku for incorrect input and found that the app did not crash.
  
 With regards to the validate input function, I did have some issues that the rest of the script would still activate even if the invalid response was activated and would not surprisingly report `None` and empty lists for stock level reports. I therefore fixed my conditional statement in the validate input function so that the while loop would only be exited if the user input was in the options lists, by using boolean logic.
  
@@ -195,7 +195,7 @@ To remove square brackets when alerting users which blood batch ID was low or ex
  
 #### Dataset column headers explanations
  
-* Blood type: blood type of batch expressed as ABO type followed by Rh status ie APOS.
+* Blood type: blood type of batch expressed as ABO type followed by Rh status i.e. APOS.
 * Units: number of units of blood within that batch.
 * Expiration: expiration date of blood batch. The idea being that the whole batch was collected by different patients on a particular day and then 35 days from there is the expiry.
 * Blood batch ID: the ID of that full blood batch (different numbers assigned based on when the blood was collected of a particular type).

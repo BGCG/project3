@@ -62,7 +62,7 @@ To integrate with input of donations data so the stocks can be adjusted based on
 ![flowchart](/assets/images/blood-app-flowchart.jpeg)
  
 Chart created using LucidChart premium free trial
- 
+
 ## Features
  
 ### Landing page
@@ -180,11 +180,13 @@ To remove square brackets when alerting users which blood batch ID was low or ex
 * Create requirements file by entering `pip3 freeze > requirements.txt` into terminal and commit and push changes
 * Go to heroku.com and go to dashboard and `create new app`
 * New app was named `blood-tracker-app`
+* Select region where you are working
 * Go to settings tab and create config vars - `KEY:CREDS VALUE:` (all contents of creds.json), `KEY:PORT VALUE:8000`
 * Add buildpacks - `heroku/python` and `heroku/nodejs` - in that order
 * Go to deploy tab and connect to GitHub
 * Find project in `BGCG` by searching `project3` and selecting connect
 * Deploy branch to main by manual deploy
+* Click `Deploy Branch` - once this is completed you will see a `View` button which you can click to open you application
  
  
 ### Dataset
